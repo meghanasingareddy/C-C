@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai & Chapter | Book Café & Reading Nooks</title>
+    <meta name="description" content="Chai & Chapter is a cozy Indian book café. Reserve dedicated reading nooks, enjoy authentic Kulhad chai, artisanal bakes, and join book lovers in our community events.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar-header">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <img src="assets/logo.jpg" alt="Chai & Chapter Emblem" class="logo-img">
+                <div class="brand-text">
+                    <span class="brand-title">Chai & Chapter</span>
+                    <span class="brand-subtitle">Book Café & Nook Sanctuary</span>
+                </div>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#nooks">Reserve a Nook</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#our-story">Our Story</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="#nooks" class="btn btn-primary">Book Your Spot</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">☕ Welcome to Your Urban Sanctuary</div>
+            <h1 class="hero-title">Where every sip tells a story, and every corner holds a book.</h1>
+            <p class="hero-description">
+                Experience the soulful fusion of steaming Kulhad Chai, handcrafted coffee, and quiet reading nooks designed for deep focus, cozy conversations, and literature lovers.
+            </p>
+            <div class="hero-actions">
+                <a href="#nooks" class="btn btn-primary btn-lg">Reserve a Reading Nook</a>
+                <a href="#menu" class="btn btn-secondary btn-lg">Explore Our Menu</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">500+</span>
+                    <span class="stat-label">Curated Books</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">12</span>
+                    <span class="stat-label">Cozy Nooks</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Desi Fresh Chai</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essence / Features Bar -->
+    <section class="essence-bar">
+        <div class="container essence-grid">
+            <div class="essence-card">
+                <div class="essence-icon">☕</div>
+                <h3>Authentic Kulhad Chai</h3>
+                <p>Brewed slow with hand-crushed ginger, cardamom, and secret spices served in traditional clay cups.</p>
+            </div>
+            <div class="essence-card">
+                <div class="essence-icon">🛋️</div>
+                <h3>Personalized Nooks</h3>
+                <p>Reserve a specific reading spot fitted with ambient lamps, power sockets, and cozy cushions.</p>
+            </div>
+            <div class="essence-card">
+                <div class="essence-icon">📚</div>
+                <h3>Community Library</h3>
+                <p>Browse genres spanning South Asian literature, classics, poetry, sci-fi, and indie graphic novels.</p>
+            </div>
+            <div class="essence-card">
+                <div class="essence-icon">✨</div>
+                <h3>Quiet & Co-Work Friendly</h3>
+                <p>Designed for readers, writers, and thinkers with high-speed WiFi and respectful quiet zones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nook Reservation Section -->
+    <section id="nooks" class="section nooks-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-heading">Your Private Sanctuary</span>
+                <h2 class="section-title">Reserve Your Reading Nook</h2>
+                <p class="section-lead">At Chai & Chapter, you don’t just book a table — you reserve a personalized reading space tailored to your mood.</p>
+            </div>
+
+            <!-- Nook Cards Showcase -->
+            <div class="nooks-grid">
+                <!-- Nook 1 -->
+                <div class="nook-card">
+                    <div class="nook-tag">Popular for Readers</div>
+                    <div class="nook-image nook-baithak">
+                        <div class="nook-badge">Quiet Zone: High</div>
+                    </div>
+                    <div class="nook-body">
+                        <h3>The Baithak</h3>
+                        <p class="nook-desc">Low Indian-style floor seating with plush velvet bolsters, warm oak low table, and soft floor lamps.</p>
+                        <ul class="nook-features">
+                            <li><span>💡</span> Warm reading light</li>
+                            <li><span>🔌</span> 2x Power Outlets</li>
+                            <li><span>🍵</span> Low tea tray setup</li>
+                        </ul>
+                        <div class="nook-footer">
+                            <span class="nook-capacity">Fits 1 - 3 People</span>
+                            <a href="#booking-form" class="btn btn-outline btn-sm select-nook-btn" data-nook="The Baithak">Select Nook</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nook 2 -->
+                <div class="nook-card">
+                    <div class="nook-tag">Sunlit Spot</div>
+                    <div class="nook-image nook-window">
+                        <div class="nook-badge">Quiet Zone: Medium</div>
+                    </div>
+                    <div class="nook-body">
+                        <h3>The Sunlit Bay Window</h3>
+                        <p class="nook-desc">A cushioned window seat overlooking the garden greenery with natural light and a dedicated book stack table.</p>
+                        <ul class="nook-features">
+                            <li><span>☀️</span> Abundant natural light</li>
+                            <li><span>🌿</span> Garden views</li>
+                            <li><span>☕</span> Side cup holder</li>
+                        </ul>
+                        <div class="nook-footer">
+                            <span class="nook-capacity">Fits 1 - 2 People</span>
+                            <a href="#booking-form" class="btn btn-outline btn-sm select-nook-btn" data-nook="The Sunlit Bay Window">Select Nook</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nook 3 -->
+                <div class="nook-card">
+                    <div class="nook-tag">Writer's Choice</div>
+                    <div class="nook-image nook-alcove">
+                        <div class="nook-badge">Quiet Zone: Silent</div>
+                    </div>
+                    <div class="nook-body">
+                        <h3>The Library Alcove</h3>
+                        <p class="nook-desc">Tucked between antique teak bookshelves, featuring an ergonomic leather armchair and adjustable desk light.</p>
+                        <ul class="nook-features">
+                            <li><span>📖</span> Direct shelf access</li>
+                            <li><span>💻</span> High-speed WiFi</li>
+                            <li><span>🎧</span> Noise-conscious area</li>
+                        </ul>
+                        <div class="nook-footer">
+                            <span class="nook-capacity">Fits 1 Person</span>
+                            <a href="#booking-form" class="btn btn-outline btn-sm select-nook-btn" data-nook="The Library Alcove">Select Nook</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nook 4 -->
+                <div class="nook-card">
+                    <div class="nook-tag">Chai & Chill</div>
+                    <div class="nook-image nook-swing">
+                        <div class="nook-badge">Quiet Zone: Ambient</div>
+                    </div>
+                    <div class="nook-body">
+                        <h3>The Courtyard Swing</h3>
+                        <p class="nook-desc">A handcrafted wooden jhula (swing) nestled under indoor fairy lights and hanging pothos greenery.</p>
+                        <ul class="nook-features">
+                            <li><span>✨</span> Cozy ambient lighting</li>
+                            <li><span>🪴</span> Indoor plant canopy</li>
+                            <li><span>🫖</span> Spacious chai table</li>
+                        </ul>
+                        <div class="nook-footer">
+                            <span class="nook-capacity">Fits 1 - 2 People</span>
+                            <a href="#booking-form" class="btn btn-outline btn-sm select-nook-btn" data-nook="The Courtyard Swing">Select Nook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div id="booking-form" class="booking-wrapper">
+                <div class="booking-card">
+                    <div class="booking-header">
+                        <h3>Reserve Your Reading Time</h3>
+                        <p>Select your date, preferred nook, and tell us how you take your chai!</p>
+                    </div>
+                    <form class="booking-form" onsubmit="event.preventDefault(); alert('Thank you! Your nook reservation request at Chai & Chapter has been received. We will confirm via SMS/Email shortly.');">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="guest-name">Full Name</label>
+                                <input type="text" id="guest-name" placeholder="e.g. Aarav Sharma" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guest-phone">Phone Number</label>
+                                <input type="tel" id="guest-phone" placeholder="+91 98765 43210" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reservation-date">Date</label>
+                                <input type="date" id="reservation-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time-slot">Time Slot</label>
+                                <select id="time-slot" required>
+                                    <option value="">Select a time slot...</option>
+                                    <option value="morning">Morning Read (9:00 AM - 12:00 PM)</option>
+                                    <option value="afternoon">Afternoon Siesta (12:30 PM - 3:30 PM)</option>
+                                    <option value="tea-time">Chai & Sunset (4:00 PM - 7:00 PM)</option>
+                                    <option value="evening">Late Evening Stories (7:30 PM - 10:00 PM)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nook-select">Preferred Nook</label>
+                                <select id="nook-select" required>
+                                    <option value="">Choose a nook...</option>
+                                    <option value="baithak">The Baithak (Floor Seating)</option>
+                                    <option value="window">The Sunlit Bay Window</option>
+                                    <option value="alcove">The Library Alcove (Silent desk)</option>
+                                    <option value="swing">The Courtyard Swing</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="favorite-genre">Reading Genre / Mood</label>
+                                <select id="favorite-genre">
+                                    <option value="fiction">Contemporary Indian Fiction</option>
+                                    <option value="classics">World Classics</option>
+                                    <option value="poetry">Poetry & Gazals</option>
+                                    <option value="nonfiction">Philosophy & Biographies</option>
+                                    <option value="work">Co-Working / Deep Work</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="special-notes">Special Requests (Chai preferences, book recommendations, birthday setup)</label>
+                            <textarea id="special-notes" rows="3" placeholder="e.g. Extra adrak in my chai, looking for mystery book suggestions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Confirm Reservation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section menu-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-heading">Freshly Brewed & Baked</span>
+                <h2 class="section-title">The Café Menu</h2>
+                <p class="section-lead">Made fresh daily with organic tea leaves, single-origin Indian coffee beans, and traditional baking recipes.</p>
+            </div>
+
+            <!-- Menu Tabs -->
+            <div class="menu-container">
+                <!-- Chai & Teas -->
+                <div class="menu-category">
+                    <h3 class="category-title">🫖 Signature Chai & Teas</h3>
+                    <div class="menu-items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Desi Kulhad Masala Chai <span class="item-tag tag-bestseller">Bestseller</span></h4>
+                                <span class="item-price">₹90</span>
+                            </div>
+                            <p class="item-desc">Assam CTC tea simmered with fresh ginger, green cardamom, cloves, and cinnamon. Served piping hot in clay kulhad.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Adrak Elaichi Special</h4>
+                                <span class="item-price">₹85</span>
+                            </div>
+                            <p class="item-desc">A heartwarming kick of freshly grated ginger and subtle aromatic cardamom. The ultimate rain & book companion.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Royal Kashmiri Kahwa <span class="item-tag tag-special">House Special</span></h4>
+                                <span class="item-price">₹140</span>
+                            </div>
+                            <p class="item-desc">Green tea infused with saffron strands, whole spices, topped with crushed almonds and a touch of wild honey.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Old Bombay Irani Chai</h4>
+                                <span class="item-price">₹110</span>
+                            </div>
+                            <p class="item-desc">Rich, creamy condensed tea brewed Irani style. Pairs deliciously with hot maska bun.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coffees -->
+                <div class="menu-category">
+                    <h3 class="category-title">☕ Artisanal Coffees</h3>
+                    <div class="menu-items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Traditional South Indian Filter Kaapi <span class="item-tag tag-bestseller">Bestseller</span></h4>
+                                <span class="item-price">₹100</span>
+                            </div>
+                            <p class="item-desc">Chicory-blended dark roast frothed traditionally in a brass dabarah set. Strong, aromatic, and comforting.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Hazelnut Cinnamon Latte</h4>
+                                <span class="item-price">₹160</span>
+                            </div>
+                            <p class="item-desc">Double espresso shot with steamed oat milk, roasted hazelnut syrup, and dusted Ceylon cinnamon.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Overnight Dark Roast Cold Brew</h4>
+                                <span class="item-price">₹150</span>
+                            </div>
+                            <p class="item-desc">Steeped for 18 hours using Chikmagalur Arabica beans. Smooth, low acidity, served over clear ice block.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Cardamom Rose Espresso Tonic</h4>
+                                <span class="item-price">₹170</span>
+                            </div>
+                            <p class="item-desc">Sparkling tonic water with homemade rose syrup and topped with a fresh espresso float.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bakes & Savories -->
+                <div class="menu-category">
+                    <h3 class="category-title">🥐 Bookworm Bakes & Savories</h3>
+                    <div class="menu-items-grid">
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Warm Bun Maska with House Jam <span class="item-tag tag-bestseller">Classic</span></h4>
+                                <span class="item-price">₹90</span>
+                            </div>
+                            <p class="item-desc">Soft, toasted sweet bun slathered with salted Amul butter and homemade mulled berry jam.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Spiced Paneer & Corn Toastie</h4>
+                                <span class="item-price">₹160</span>
+                            </div>
+                            <p class="item-desc">Sourdough bread stuffed with mint chutney, cottage cheese, sweet corn, and sharp cheddar cheese.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Baked Cocktail Samosa Sliders</h4>
+                                <span class="item-price">₹150</span>
+                            </div>
+                            <p class="item-desc">Mini artisanal pav buns stuffed with crisp potato samosas, sweet tamarind, and spicy green chutney.</p>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="item-header">
+                                <h4 class="item-name">Date, Fig & Walnut Loaf Cake</h4>
+                                <span class="item-price">₹140</span>
+                            </div>
+                            <p class="item-desc">Moist, naturally sweetened cake slice studded with toasted walnuts and chewy dates. Served warm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="events" class="section events-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-heading">Community Gatherings</span>
+                <h2 class="section-title">Upcoming Café Events</h2>
+                <p class="section-lead">Join fellow book lovers, poets, and storytellers for intimate gatherings that warm the heart.</p>
+            </div>
+
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="event-date-badge">
+                        <span class="event-day">17</span>
+                        <span class="event-month">OCT</span>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <span class="event-tag">Poetry & Shayari</span>
+                            <span class="event-time">⏰ Friday, 7:00 PM - 9:00 PM</span>
+                        </div>
+                        <h3 class="event-title">Shaam-e-Shayari: Candlelight Poetry Night</h3>
+                        <p class="event-desc">An evening of ghazals, original poems, and warm cups of saffron tea. Open mic slots available for local poets.</p>
+                        <div class="event-footer">
+                            <span class="event-price">Free Entry (Min 1 Drink)</span>
+                            <button class="btn btn-outline btn-sm" onclick="alert('RSVP registered for Shaam-e-Shayari! See you on Friday night.');">RSVP Spot</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="event-date-badge">
+                        <span class="event-day">22</span>
+                        <span class="event-month">OCT</span>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <span class="event-tag">Author Meetup</span>
+                            <span class="event-time">⏰ Wednesday, 5:30 PM - 7:30 PM</span>
+                        </div>
+                        <h3 class="event-title">Author Spotlight: Indian Indie Fiction</h3>
+                        <p class="event-desc">Q&A session and book signing with author Meera Sen on her new novel set in old Kolkata. Includes signed bookmarks!</p>
+                        <div class="event-footer">
+                            <span class="event-price">₹250 (Includes Book & Chai)</span>
+                            <button class="btn btn-outline btn-sm" onclick="alert('RSVP registered for Author Spotlight! Ticket confirmation sent.');">Reserve Pass</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card">
+                    <div class="event-date-badge">
+                        <span class="event-day">26</span>
+                        <span class="event-month">OCT</span>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-meta">
+                            <span class="event-tag">Book Swap</span>
+                            <span class="event-time">⏰ Sunday, 11:00 AM - 2:00 PM</span>
+                        </div>
+                        <h3 class="event-title">The Sunday Book Swap: Bring 1, Take 1</h3>
+                        <p class="event-desc">Bring pre-loved books from your home shelf, leave a handwritten note inside, and discover your next favorite read!</p>
+                        <div class="event-footer">
+                            <span class="event-price">Free for All</span>
+                            <button class="btn btn-outline btn-sm" onclick="alert('RSVP registered for Sunday Book Swap! Don\'t forget to bring your books.');">Join Swap</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Owner / Story Section -->
+    <section id="our-story" class="section story-section">
+        <div class="container story-grid">
+            <div class="story-image-column">
+                <div class="story-image-frame">
+                    <img src="assets/logo.jpg" alt="Chai & Chapter Warm Atmosphere" class="story-img">
+                    <div class="story-badge-floating">
+                        <span>Founded with Love</span>
+                        <strong>Est. 2023</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="story-text-column">
+                <span class="sub-heading">Behind the Counter</span>
+                <h2 class="section-title">Meet the Founders & Our Vision</h2>
+                <p class="story-paragraph">
+                    "Growing up in India, two things were permanent fixtures in our homes: a perpetually simmering pot of masala chai and shelves overflowing with paperbacks."
+                </p>
+                <p class="story-paragraph">
+                    We built <strong>Chai & Chapter</strong> to recreate the warmth of home reading. In a fast-paced digital world, we wanted to build a sanctuary where people can slow down, turn paper pages, sip unhurried tea, and form meaningful community connections.
+                </p>
+                <div class="owner-quote">
+                    <blockquote>
+                        "A book store gives you knowledge; a café gives you warmth. Chai & Chapter brings both together under one roof."
+                    </blockquote>
+                    <div class="owner-signature">
+                        <strong>— Ananya & Vikram</strong>
+                        <span>Founders, Chai & Chapter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reader Reviews / Testimonials -->
+    <section id="reviews" class="section reviews-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="sub-heading">Real Reader Stories</span>
+                <h2 class="section-title">What Our Community Says</h2>
+                <p class="section-lead">Here is why book lovers, remote writers, and chai enthusiasts call us their second home.</p>
+            </div>
+
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="review-text">
+                        "The Baithak nook is my absolute happy place! I spent four uninterrupted hours reading 'The God of Small Things' while sipping hot ginger chai. The quiet atmosphere is so rare in the city."
+                    </p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">R</div>
+                        <div>
+                            <h4 class="reviewer-name">Rohan Mukherjee</h4>
+                            <span class="reviewer-tag">Frequent Nook Reader</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="review-text">
+                        "As a freelance writer, finding a café that respects quiet work without loud blender noises is a miracle. The Library Alcove desk has great lighting and fast WiFi. And the bun maska is top tier!"
+                    </p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">P</div>
+                        <div>
+                            <h4 class="reviewer-name">Priya Sundaram</h4>
+                            <span class="reviewer-tag">Author & Freelancer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="review-text">
+                        "Attended the Shaam-e-Shayari event last Friday. The mood lighting, authentic kulhad chai, and beautiful poetry readings made it an unforgettable night. Truly has an Indian soul."
+                    </p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">K</div>
+                        <div>
+                            <h4 class="reviewer-name">Kabir Mehta</h4>
+                            <span class="reviewer-tag">Poetry Event Attendee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Club & Newsletter Section -->
+    <section class="section newsletter-section">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-content text-center">
+                    <span class="newsletter-badge">📖 The Chapter Club</span>
+                    <h2>Join Our Monthly Book Club & Newsletter</h2>
+                    <p>Subscribe to receive curated monthly reading lists, early access to nook reservations on weekends, and a special birthday treat!</p>
+                    
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to The Chapter Club! Check your inbox for our latest book recommendation list.');">
+                        <div class="newsletter-input-group">
+                            <input type="email" placeholder="Enter your email address..." required>
+                            <button type="submit" class="btn btn-primary">Subscribe Now</button>
+                        </div>
+                    </form>
+
+                    <div class="newsletter-perks">
+                        <span>✓ Monthly Book Recommendations</span>
+                        <span>✓ Priority Event Passes</span>
+                        <span>✓ Free Birthday Kulhad Chai</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <div class="footer-brand">
+                    <img src="assets/logo.jpg" alt="Chai & Chapter Logo" class="footer-logo">
+                    <span class="footer-title">Chai & Chapter</span>
+                </div>
+                <p class="footer-tagline">
+                    A digital & physical sanctuary combining authentic Indian chai, quiet reading nooks, and a warm literature community.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#nooks">Reserve a Nook</a></li>
+                    <li><a href="#menu">Our Menu</a></li>
+                    <li><a href="#events">Upcoming Events</a></li>
+                    <li><a href="#our-story">Our Story</a></li>
+                    <li><a href="#reviews">Reader Reviews</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Opening Hours</h4>
+                <ul class="footer-info">
+                    <li><strong>Mon - Thu:</strong> 8:30 AM – 9:30 PM</li>
+                    <li><strong>Fri - Sun:</strong> 8:30 AM – 10:30 PM</li>
+                    <li><span class="open-status">🟢 Open Daily for Nook Bookings</span></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Visit Us</h4>
+                <p class="footer-address">
+                    📍 #42, Harmony Lane, Near Literature Park, Indiranagar, Bengaluru - 560038
+                </p>
+                <p class="footer-contact">
+                    📞 +91 (80) 4567 8900<br>
+                    ✉️ hello@chaiandchapter.in
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>© 2026 Chai & Chapter Book Café. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#">Instagram</a> • <a href="#">Twitter</a> • <a href="#">Goodreads Club</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
