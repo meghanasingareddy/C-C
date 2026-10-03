@@ -1,4 +1,4 @@
-# Chai & Chapter - Book Cafe Websitee
+# Chai & Chapter - Book Cafe Website
 
 Chai & Chapter is a college training project for a digital book cafe website. It combines authentic Indian chai culture with dedicated reading nooks, an artisanal cafe menu, community events, founder background, reader reviews, and a book-club newsletter.
 
