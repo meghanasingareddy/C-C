@@ -68,15 +68,15 @@
     </div>
 </div>
 
-<!-- ========== HEADER ========== -->
 <header>
     <a href="#home" class="logo">
-        <img src="assets/logo_new.jpg" alt="Chai &amp; Chapter">
+        <img src="assets/logo_new.jpg" alt="Chai & Chapter">
         <div>
-            <h2>Chai &amp; Chapter</h2>
-            <span>Book Café &amp; Nooks</span>
+            <h2>Chai & Chapter</h2>
+            <span>Book Café & Nooks</span>
         </div>
     </a>
+
     <nav>
         <a href="#home">Home</a>
         <a href="#nook-showcase">Reading Nooks</a>
@@ -86,20 +86,20 @@
         <a href="#events">Events</a>
         <a href="#reviews">Reviews</a>
     </nav>
-<<<<<<< HEAD
-    <a href="#reservation" class="header-btn">
-        Login
-    </a>
-=======
+
     <div class="header-right">
         <button class="cart-btn" id="open-cart" title="View Cart">
             <i class='bx bx-cart'></i>
             <span class="cart-count" id="cart-count">0</span>
         </button>
-        <button class="header-btn" id="open-login">Login</button>
+
+        <button class="header-btn" id="open-login">
+            <i class='bx bx-user'></i>
+            <span>Login</span>
+        </button>
     </div>
->>>>>>> 4f6b3aa (scroll pane)
 </header>
+ 
 
 <!-- ========== CLASSIC HOME HERO ========== -->
 <section class="home" id="home">
@@ -329,19 +329,22 @@
             <i class='bx bx-grid-alt'></i> All Items
         </button>
         <button class="cat-btn" data-category="pizzas">
-            <i class='bx bxs-pizza'></i> Pizzas (<span class="cat-count">4</span>)
+            <i class='bx bxs-pizza'></i> Pizzas (<span class="cat-count">5</span>)
         </button>
         <button class="cat-btn" data-category="chai-coffee">
-            <i class='bx bx-coffee'></i> Chai &amp; Coffee (<span class="cat-count">4</span>)
+            <i class='bx bx-coffee'></i> Chai &amp; Coffee (<span class="cat-count">7</span>)
         </button>
         <button class="cat-btn" data-category="sandwiches">
             <i class='bx bx-baguette'></i> Sandwiches &amp; Bites (<span class="cat-count">4</span>)
         </button>
         <button class="cat-btn" data-category="bakes">
-            <i class='bx bx-cake'></i> Bakes &amp; Desserts (<span class="cat-count">4</span>)
+            <i class='bx bx-cake'></i> Bakes &amp; Desserts (<span class="cat-count">5</span>)
         </button>
         <button class="cat-btn" data-category="milkshakes">
-            <i class='bx bx-drink'></i> Milkshakes (<span class="cat-count">4</span>)
+            <i class='bx bx-drink'></i> Milkshakes (<span class="cat-count">5</span>)
+        </button>
+        <button class="cat-btn" data-category="pasta">
+            <i class='bx bx-bowl-hot'></i> Pasta &amp; Mains (<span class="cat-count">1</span>)
         </button>
     </div>
 
@@ -645,6 +648,131 @@
                     <p>Pure Madagascar vanilla bean ice cream shaken with chilled whole milk.</p>
                     <strong>&#8377;130</strong>
                     <button class="btn add-cart-btn" data-name="Classic Vanilla Bean Shake" data-price="130">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- ====== NEW PIZZAS ====== -->
+            <div class="product-box" data-category="pizzas">
+                <div class="product-img-wrap">
+                    <img src="assets/veggie_pizza.jpeg" alt="Loaded Veggie Garden Pizza">
+                    <span class="item-tag">Garden Fresh</span>
+                </div>
+                <div class="product-info">
+                    <h3>Loaded Garden Veggie Pizza</h3>
+                    <p>Broccoli, corn, red &amp; yellow capsicum, black olives on a rich mozzarella crust.</p>
+                    <strong>&#8377;250</strong>
+                    <button class="btn add-cart-btn" data-name="Loaded Garden Veggie Pizza" data-price="250">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- ====== NEW CHAI & COFFEE ====== -->
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/iced_coffee.jpeg" alt="Iced Caramel Latte">
+                    <span class="item-tag">Café Favourite</span>
+                </div>
+                <div class="product-info">
+                    <h3>Iced Caramel Latte</h3>
+                    <p>Creamy espresso swirled with silky caramel milk over ice — perfect for any afternoon.</p>
+                    <strong>&#8377;160</strong>
+                    <button class="btn add-cart-btn" data-name="Iced Caramel Latte" data-price="160">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/hot_chocolate.jpeg" alt="Marshmallow Hot Chocolate">
+                    <span class="item-tag">Winter Warmer</span>
+                </div>
+                <div class="product-info">
+                    <h3>Marshmallow Hot Chocolate</h3>
+                    <p>Rich velvety cocoa topped with toasted marshmallows, cocoa dust &amp; a chocolate bar.</p>
+                    <strong>&#8377;170</strong>
+                    <button class="btn add-cart-btn" data-name="Marshmallow Hot Chocolate" data-price="170">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/black_coffee.jpeg" alt="Steaming Black Coffee">
+                </div>
+                <div class="product-info">
+                    <h3>Dark Roast Black Coffee</h3>
+                    <p>Pure bold single-origin Ethiopian black coffee brewed to perfection. No sugar, no milk — just soul.</p>
+                    <strong>&#8377;100</strong>
+                    <button class="btn add-cart-btn" data-name="Dark Roast Black Coffee" data-price="100">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/matcha_latte.jpeg" alt="Iced Matcha Latte">
+                    <span class="item-tag">New</span>
+                </div>
+                <div class="product-info">
+                    <h3>Iced Matcha Oat Latte</h3>
+                    <p>Japanese ceremonial-grade matcha whisked smooth and poured over cold oat milk &amp; ice.</p>
+                    <strong>&#8377;180</strong>
+                    <button class="btn add-cart-btn" data-name="Iced Matcha Oat Latte" data-price="180">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- ====== NEW BAKES & DESSERTS ====== -->
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/brownie_icecream.jpeg" alt="Brownie with Ice Cream">
+                    <span class="item-tag">Indulgent</span>
+                </div>
+                <div class="product-info">
+                    <h3>Warm Brownie &agrave; la Mode</h3>
+                    <p>Gooey chocolate brownie crowned with a scoop of vanilla ice cream &amp; drizzled chocolate sauce.</p>
+                    <strong>&#8377;190</strong>
+                    <button class="btn add-cart-btn" data-name="Warm Brownie a la Mode" data-price="190">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- ====== NEW MILKSHAKES ====== -->
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/loaded_shakes.jpeg" alt="Loaded Oreo & Caramel Milkshakes">
+                    <span class="item-tag">Loaded!</span>
+                </div>
+                <div class="product-info">
+                    <h3>Loaded Oreo Caramel Shake</h3>
+                    <p>Thick Oreo milkshake &amp; caramel fudge shake crowned with whipped cream, wafers &amp; chocolate drizzle.</p>
+                    <strong>&#8377;200</strong>
+                    <button class="btn add-cart-btn" data-name="Loaded Oreo Caramel Shake" data-price="200">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+
+            <!-- ====== PASTA & MAINS ====== -->
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/pasta.jpeg" alt="Arrabbiata Spaghetti">
+                    <span class="item-tag">Chef's Pick</span>
+                </div>
+                <div class="product-info">
+                    <h3>Arrabbiata Spaghetti</h3>
+                    <p>Al dente spaghetti tossed in spicy tomato arrabbiata sauce, served with herb garlic toast.</p>
+                    <strong>&#8377;260</strong>
+                    <button class="btn add-cart-btn" data-name="Arrabbiata Spaghetti" data-price="260">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>

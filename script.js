@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* ===================================================
-       HOME SLIDESHOW
-    =================================================== */
+    /* HOME SLIDESHOW */
     var slides = document.querySelectorAll(".home-slide");
     var dots = document.querySelectorAll(".dot");
     var currentSlide = 0;
@@ -10,10 +8,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showSlide(index) {
         if (!slides.length) return;
-        slides.forEach(function (s) { s.classList.remove("active"); });
-        dots.forEach(function (d) { d.classList.remove("active"); });
+
+        slides.forEach(function (slide) {
+            slide.classList.remove("active");
+        });
+
+        dots.forEach(function (dot) {
+            dot.classList.remove("active");
+        });
+
         slides[index].classList.add("active");
-        if (dots[index]) dots[index].classList.add("active");
+
+        if (dots[index]) {
+            dots[index].classList.add("active");
+        }
+
         currentSlide = index;
     }
 
@@ -28,9 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     dots.forEach(function (dot) {
         dot.addEventListener("click", function () {
-            var idx = parseInt(this.getAttribute("data-slide"));
+            var index = parseInt(this.getAttribute("data-slide"));
+
             clearInterval(slideInterval);
-            showSlide(idx);
+            showSlide(index);
             startSlideshow();
         });
     });
@@ -40,9 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ===================================================
-       MENU CATEGORY FILTERING & SLIDER
-    =================================================== */
+    /* MENU CATEGORY FILTER */
+
     var catButtons = document.querySelectorAll(".cat-btn");
     var productBoxes = document.querySelectorAll(".product-box");
     var slider = document.getElementById("products-slider");
@@ -50,17 +59,19 @@ document.addEventListener("DOMContentLoaded", function () {
     var nextBtn = document.getElementById("next-btn");
 
     function filterMenuCategory(category) {
-        catButtons.forEach(function (btn) {
-            if (btn.getAttribute("data-category") === category) {
-                btn.classList.add("active");
+
+        catButtons.forEach(function (button) {
+            if (button.getAttribute("data-category") === category) {
+                button.classList.add("active");
             } else {
-                btn.classList.remove("active");
+                button.classList.remove("active");
             }
         });
 
         productBoxes.forEach(function (box) {
-            var itemCat = box.getAttribute("data-category");
-            if (category === "all" || itemCat === category) {
+            var itemCategory = box.getAttribute("data-category");
+
+            if (category === "all" || itemCategory === category) {
                 box.classList.remove("hide");
             } else {
                 box.classList.add("hide");
@@ -72,58 +83,83 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    catButtons.forEach(function (btn) {
-        btn.addEventListener("click", function () {
-            var cat = this.getAttribute("data-category");
-            filterMenuCategory(cat);
+    catButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            var category = this.getAttribute("data-category");
+            filterMenuCategory(category);
         });
     });
 
+
+    /* MENU SLIDER */
+
     if (slider && prevBtn && nextBtn) {
-        var scrollAmt = function () {
+
+        function getScrollAmount() {
             var visibleBox = slider.querySelector(".product-box:not(.hide)");
-            return visibleBox ? (visibleBox.offsetWidth + 22) * 2 : 320;
-        };
+
+            if (visibleBox) {
+                return (visibleBox.offsetWidth + 22) * 2;
+            }
+
+            return 320;
+        }
 
         nextBtn.addEventListener("click", function () {
-            slider.scrollBy({ left: scrollAmt(), behavior: "smooth" });
+            slider.scrollBy({
+                left: getScrollAmount(),
+                behavior: "smooth"
+            });
         });
 
         prevBtn.addEventListener("click", function () {
-            slider.scrollBy({ left: -scrollAmt(), behavior: "smooth" });
+            slider.scrollBy({
+                left: -getScrollAmount(),
+                behavior: "smooth"
+            });
         });
     }
 
 
-    /* ===================================================
-       NOOK QUICK-SELECT HELPER
-    =================================================== */
+    /* NOOK QUICK SELECT */
+
     window.selectNookOption = function (nookName) {
+
         var nookSelect = document.getElementById("nook-select");
-        if (nookSelect) {
-            for (var i = 0; i < nookSelect.options.length; i++) {
-                if (nookSelect.options[i].value === nookName || nookSelect.options[i].text.indexOf(nookName) !== -1) {
-                    nookSelect.selectedIndex = i;
-                    break;
-                }
+
+        if (!nookSelect) return;
+
+        for (var i = 0; i < nookSelect.options.length; i++) {
+
+            if (
+                nookSelect.options[i].value === nookName ||
+                nookSelect.options[i].text.indexOf(nookName) !== -1
+            ) {
+                nookSelect.selectedIndex = i;
+                break;
             }
         }
     };
 
 
-    /* ===================================================
-       ADD TO CART & CART SIDEBAR
-    =================================================== */
+    /* CART */
+
     var cart = [];
 
     function getCartItem(name) {
+
         for (var i = 0; i < cart.length; i++) {
-            if (cart[i].name === name) return cart[i];
+
+            if (cart[i].name === name) {
+                return cart[i];
+            }
         }
+
         return null;
     }
 
     function renderCart() {
+
         var cartItems = document.getElementById("cart-items");
         var cartCount = document.getElementById("cart-count");
         var cartTotalSection = document.getElementById("cart-total-section");
@@ -132,244 +168,461 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!cartItems) return;
 
         var total = 0;
-        var totalQty = 0;
+        var totalQuantity = 0;
+
         cart.forEach(function (item) {
+
             total += item.price * item.qty;
-            totalQty += item.qty;
+            totalQuantity += item.qty;
+
         });
 
-        if (cartCount) cartCount.textContent = totalQty;
+        if (cartCount) {
+            cartCount.textContent = totalQuantity;
+        }
 
         if (cart.length === 0) {
-            cartItems.innerHTML = "<p class=\"cart-empty\">Your cart is empty. Tap 'Add to Cart' on any dish to order!</p>";
-            if (cartTotalSection) cartTotalSection.style.display = "none";
+
+            cartItems.innerHTML =
+                "<p class=\"cart-empty\">Your cart is empty. Add some items!</p>";
+
+            if (cartTotalSection) {
+                cartTotalSection.style.display = "none";
+            }
+
             return;
         }
 
-        if (cartTotalSection) cartTotalSection.style.display = "block";
-        if (cartTotalPrice) cartTotalPrice.textContent = "\u20B9" + total;
+        if (cartTotalSection) {
+            cartTotalSection.style.display = "block";
+        }
+
+        if (cartTotalPrice) {
+            cartTotalPrice.textContent = "₹" + total;
+        }
 
         cartItems.innerHTML = "";
+
         cart.forEach(function (item) {
+
             var div = document.createElement("div");
+
             div.className = "cart-item";
+
             div.innerHTML =
                 "<div class=\"cart-item-info\">" +
                     "<h4>" + item.name + "</h4>" +
-                    "<span>\u20B9" + (item.price * item.qty) + "</span>" +
+                    "<span>₹" + (item.price * item.qty) + "</span>" +
                 "</div>" +
+
                 "<div class=\"cart-item-controls\">" +
-                    "<button class=\"cart-qty-btn\" data-action=\"minus\" data-name=\"" + item.name + "\" aria-label=\"Decrease quantity\">-</button>" +
-                    "<span class=\"cart-qty\">" + item.qty + "</span>" +
-                    "<button class=\"cart-qty-btn\" data-action=\"plus\" data-name=\"" + item.name + "\" aria-label=\"Increase quantity\">+</button>" +
+
+                    "<button class=\"cart-qty-btn\" " +
+                    "data-action=\"minus\" " +
+                    "data-name=\"" + item.name + "\">-</button>" +
+
+                    "<span class=\"cart-qty\">" +
+                    item.qty +
+                    "</span>" +
+
+                    "<button class=\"cart-qty-btn\" " +
+                    "data-action=\"plus\" " +
+                    "data-name=\"" + item.name + "\">+</button>" +
+
                 "</div>";
+
             cartItems.appendChild(div);
         });
 
-        cartItems.querySelectorAll(".cart-qty-btn").forEach(function (btn) {
-            btn.addEventListener("click", function () {
+        cartItems.querySelectorAll(".cart-qty-btn").forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
                 var name = this.getAttribute("data-name");
                 var action = this.getAttribute("data-action");
+
                 var item = getCartItem(name);
+
                 if (!item) return;
+
                 if (action === "plus") {
+
                     item.qty++;
+
                 } else {
+
                     item.qty--;
+
                     if (item.qty <= 0) {
-                        cart = cart.filter(function (c) { return c.name !== name; });
+
+                        cart = cart.filter(function (cartItem) {
+                            return cartItem.name !== name;
+                        });
+
                     }
                 }
+
                 renderCart();
             });
         });
     }
 
-    document.querySelectorAll(".add-cart-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
+
+    /* ADD TO CART */
+
+    document.querySelectorAll(".add-cart-btn").forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
             var name = this.getAttribute("data-name");
             var price = parseInt(this.getAttribute("data-price"));
-            var existing = getCartItem(name);
-            if (existing) {
-                existing.qty++;
+
+            var existingItem = getCartItem(name);
+
+            if (existingItem) {
+
+                existingItem.qty++;
+
             } else {
-                cart.push({ name: name, price: price, qty: 1 });
+
+                cart.push({
+                    name: name,
+                    price: price,
+                    qty: 1
+                });
             }
+
             renderCart();
             openCart();
 
-            // Button feedback
-            var orig = this.innerHTML;
+            var originalText = this.innerHTML;
+
             this.innerHTML = "<i class='bx bx-check'></i> Added!";
+
             this.style.background = "#2e7d32";
-            var self = this;
+
+            var button = this;
+
             setTimeout(function () {
-                self.innerHTML = orig;
-                self.style.background = "";
+
+                button.innerHTML = originalText;
+                button.style.background = "";
+
             }, 1000);
         });
     });
 
-    // Confirm order button
-    var orderBtn = document.querySelector(".cart-order-btn");
-    if (orderBtn) {
-        orderBtn.addEventListener("click", function () {
+
+    /* CART ORDER */
+
+    var orderButton = document.querySelector(".cart-order-btn");
+
+    if (orderButton) {
+
+        orderButton.addEventListener("click", function () {
+
             if (cart.length === 0) return;
-            alert("Order placed successfully! Your order is being freshly prepared in the kitchen. Please collect hot at the counter. Thank you!");
+
+            alert(
+                "Order placed successfully! " +
+                "Your order is being freshly prepared in the kitchen. " +
+                "Please collect hot at the counter. Thank you!"
+            );
+
             cart = [];
+
             renderCart();
             closeCart();
         });
     }
 
+
+    /* OPEN CART */
+
     function openCart() {
+
         var sidebar = document.getElementById("cart-sidebar");
         var overlay = document.getElementById("cart-overlay");
-        if (sidebar) sidebar.classList.add("open");
-        if (overlay) overlay.classList.add("active");
+
+        if (sidebar) {
+            sidebar.classList.add("open");
+        }
+
+        if (overlay) {
+            overlay.classList.add("active");
+        }
     }
+
+
+    /* CLOSE CART */
 
     function closeCart() {
+
         var sidebar = document.getElementById("cart-sidebar");
         var overlay = document.getElementById("cart-overlay");
-        if (sidebar) sidebar.classList.remove("open");
-        if (overlay) overlay.classList.remove("active");
+
+        if (sidebar) {
+            sidebar.classList.remove("open");
+        }
+
+        if (overlay) {
+            overlay.classList.remove("active");
+        }
     }
 
-    var openCartBtn = document.getElementById("open-cart");
-    if (openCartBtn) {
-        openCartBtn.addEventListener("click", openCart);
+
+    var openCartButton = document.getElementById("open-cart");
+
+    if (openCartButton) {
+        openCartButton.addEventListener("click", openCart);
     }
 
-    var cartCloseBtn = document.getElementById("cart-close");
-    if (cartCloseBtn) {
-        cartCloseBtn.addEventListener("click", closeCart);
+
+    var cartCloseButton = document.getElementById("cart-close");
+
+    if (cartCloseButton) {
+        cartCloseButton.addEventListener("click", closeCart);
     }
+
 
     var cartOverlay = document.getElementById("cart-overlay");
+
     if (cartOverlay) {
         cartOverlay.addEventListener("click", closeCart);
     }
 
 
-    /* ===================================================
-       LOGIN / SIGNUP MODAL
-    =================================================== */
+    /* LOGIN / SIGNUP */
+
     var modal = document.getElementById("auth-modal");
     var loginPanel = document.getElementById("login-panel");
     var signupPanel = document.getElementById("signup-panel");
 
+
     function openModal() {
-        if (modal) modal.classList.add("active");
+
+        if (modal) {
+            modal.classList.add("active");
+        }
     }
+
 
     function closeModal() {
-        if (modal) modal.classList.remove("active");
+
+        if (modal) {
+            modal.classList.remove("active");
+        }
     }
+
 
     function showLogin() {
-        if (loginPanel) loginPanel.classList.remove("hidden");
-        if (signupPanel) signupPanel.classList.add("hidden");
+
+        if (loginPanel) {
+            loginPanel.classList.remove("hidden");
+        }
+
+        if (signupPanel) {
+            signupPanel.classList.add("hidden");
+        }
     }
+
 
     function showSignup() {
-        if (signupPanel) signupPanel.classList.remove("hidden");
-        if (loginPanel) loginPanel.classList.add("hidden");
+
+        if (signupPanel) {
+            signupPanel.classList.remove("hidden");
+        }
+
+        if (loginPanel) {
+            loginPanel.classList.add("hidden");
+        }
     }
 
-    var openLoginBtn = document.getElementById("open-login");
-    if (openLoginBtn) {
-        openLoginBtn.addEventListener("click", function () {
+
+    var openLoginButton = document.getElementById("open-login");
+
+    if (openLoginButton) {
+
+        openLoginButton.addEventListener("click", function () {
+
             showLogin();
             openModal();
+
         });
     }
 
-    var modalClose1 = document.getElementById("modal-close-btn");
-    if (modalClose1) modalClose1.addEventListener("click", closeModal);
 
-    var modalClose2 = document.getElementById("modal-close-btn2");
-    if (modalClose2) modalClose2.addEventListener("click", closeModal);
+    var modalCloseButton = document.getElementById("modal-close-btn");
 
-    var goSignup = document.getElementById("go-signup");
-    if (goSignup) {
-        goSignup.addEventListener("click", function (e) {
-            e.preventDefault();
+    if (modalCloseButton) {
+        modalCloseButton.addEventListener("click", closeModal);
+    }
+
+
+    var modalCloseButton2 = document.getElementById("modal-close-btn2");
+
+    if (modalCloseButton2) {
+        modalCloseButton2.addEventListener("click", closeModal);
+    }
+
+
+    var signupLink = document.getElementById("go-signup");
+
+    if (signupLink) {
+
+        signupLink.addEventListener("click", function (event) {
+
+            event.preventDefault();
             showSignup();
+
         });
     }
 
-    var goLogin = document.getElementById("go-login");
-    if (goLogin) {
-        goLogin.addEventListener("click", function (e) {
-            e.preventDefault();
+
+    var loginLink = document.getElementById("go-login");
+
+    if (loginLink) {
+
+        loginLink.addEventListener("click", function (event) {
+
+            event.preventDefault();
             showLogin();
+
         });
     }
+
 
     if (modal) {
-        modal.addEventListener("click", function (e) {
-            if (e.target === modal) closeModal();
+
+        modal.addEventListener("click", function (event) {
+
+            if (event.target === modal) {
+                closeModal();
+            }
+
         });
     }
 
-    var loginSubmit = loginPanel ? loginPanel.querySelector(".modal-submit-btn") : null;
+
+    /* LOGIN BUTTON */
+
+    var loginSubmit = loginPanel
+        ? loginPanel.querySelector(".modal-submit-btn")
+        : null;
+
     if (loginSubmit) {
+
         loginSubmit.addEventListener("click", function () {
-            alert("Welcome back to Chai & Chapter! You are now logged in.");
+
+            alert(
+                "Welcome back to Chai & Chapter! " +
+                "You are now logged in."
+            );
+
             closeModal();
+
         });
     }
 
-    var signupSubmit = signupPanel ? signupPanel.querySelector(".modal-submit-btn") : null;
+
+    /* SIGNUP BUTTON */
+
+    var signupSubmit = signupPanel
+        ? signupPanel.querySelector(".modal-submit-btn")
+        : null;
+
     if (signupSubmit) {
+
         signupSubmit.addEventListener("click", function () {
-            alert("Welcome to Chai & Chapter! Your account has been created.");
+
+            alert(
+                "Welcome to Chai & Chapter! " +
+                "Your account has been created."
+            );
+
             closeModal();
+
         });
     }
 
 
-    /* ===================================================
-       RESERVATION FORM
-    =================================================== */
-    var reservationForm = document.getElementById("reservation-form");
+    /* RESERVATION */
+
+    var reservationForm =
+        document.getElementById("reservation-form");
 
     if (reservationForm) {
-        reservationForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            var name = document.getElementById("guest-name").value;
-            var nook = document.getElementById("nook-select").value;
-            var date = document.getElementById("reservation-date").value;
-            alert("Thank you " + name + "! Your " + nook + " reservation for " + date + " is confirmed. We will keep your table ready!");
+
+        reservationForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            var name =
+                document.getElementById("guest-name").value;
+
+            var nook =
+                document.getElementById("nook-select").value;
+
+            var date =
+                document.getElementById("reservation-date").value;
+
+            alert(
+                "Thank you " +
+                name +
+                "! Your " +
+                nook +
+                " reservation for " +
+                date +
+                " is confirmed."
+            );
+
             reservationForm.reset();
+
         });
     }
 
 
-    /* ===================================================
-       NEWSLETTER FORM
-    =================================================== */
-    var newsletterForm = document.getElementById("newsletter-form");
+    /* NEWSLETTER */
+
+    var newsletterForm =
+        document.getElementById("newsletter-form");
 
     if (newsletterForm) {
-        newsletterForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert("Welcome to The Chapter Club! You are successfully subscribed to our monthly book & chai letters.");
+
+        newsletterForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            alert(
+                "Welcome to The Chapter Club! " +
+                "You are successfully subscribed to our monthly book & chai letters."
+            );
+
             newsletterForm.reset();
+
         });
     }
 
 
-    /* ===================================================
-       EVENT RSVP BUTTONS
-    =================================================== */
-    var eventButtons = document.querySelectorAll(".event-btn");
+    /* EVENT RSVP */
+
+    var eventButtons =
+        document.querySelectorAll(".event-btn");
 
     eventButtons.forEach(function (button) {
+
         button.addEventListener("click", function () {
-            var eventName = this.getAttribute("data-event");
-            alert("Your RSVP for \"" + eventName + "\" has been registered! We look forward to seeing you.");
+
+            var eventName =
+                this.getAttribute("data-event");
+
+            alert(
+                "Your RSVP for \"" +
+                eventName +
+                "\" has been registered! " +
+                "We look forward to seeing you."
+            );
+
         });
     });
 
