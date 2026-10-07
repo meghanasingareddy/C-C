@@ -2284,22 +2284,84 @@
     </div>
 </footer>
 
-<script src="script.js"></script>
-
 <!-- ========== CLEAN CATALOG POPUP MODAL ========== -->
 <div class="modal-overlay catalog-modal-overlay" id="catalog-modal">
     <div class="modal-box catalog-modal-box">
+
         <div class="catalog-modal-header">
-            <h2 class="catalog-modal-title" id="catalog-modal-title">Complete Library</h2>
-            <button class="catalog-close-btn" onclick="closeCatalogModal()" aria-label="Close modal"><i class='bx bx-x'></i></button>
+            <h2 class="catalog-modal-title" id="catalog-modal-title">
+                Complete Library
+            </h2>
+
+            <button
+                class="catalog-close-btn"
+                onclick="closeCatalogModal()"
+                aria-label="Close modal">
+                <i class='bx bx-x'></i>
+            </button>
         </div>
+
         <div class="catalog-modal-body" id="catalog-modal-body">
             <div class="catalog-grid" id="catalog-grid">
                 <!-- Dynamically populated cards -->
             </div>
         </div>
+
     </div>
 </div>
+
+
+<!-- ========== CAFÉ RSVP / NOTIFICATION POPUP ========== -->
+<div class="modal-overlay" id="cafe-popup-modal">
+
+    <div class="modal-box cafe-popup-box">
+
+        <button
+            class="modal-close"
+            id="cafe-popup-close"
+            type="button"
+            aria-label="Close popup">
+            &times;
+        </button>
+
+        <div class="cafe-popup-badge">
+            <i class="bx bxs-calendar-heart" id="cafe-popup-icon"></i>
+        </div>
+
+        <span
+            class="cafe-popup-label"
+            id="cafe-popup-label">
+            SEAT RESERVED • FREE ENTRY
+        </span>
+
+        <h2 id="cafe-popup-title">
+            RSVP Confirmed!
+        </h2>
+
+        <p id="cafe-popup-desc">
+            Your seat has been reserved.
+        </p>
+
+        <div
+            class="cafe-popup-card"
+            id="cafe-popup-card"
+            style="display:none;">
+        </div>
+
+        <button
+            class="btn cafe-popup-action-btn"
+            id="cafe-popup-btn"
+            type="button">
+            Add to My Schedule
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ========== SCRIPT — MUST BE LAST ========== -->
+<script src="script.js"></script>
 
 </body>
 </html>
