@@ -1,18 +1,22 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chai &amp; Chapter | Book Café &amp; Reading Nooks</title>
-    <link href="https://fonts.googleapis.com">
-    <link href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <title>Chai &amp; Chapter &mdash; Book Caf&eacute; &amp; Reading Sanctuary</title>
+    
     <link rel="stylesheet" href="style.css">
+    
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!-- ========== LOGIN / SIGNUP MODAL ========== -->
+    <!-- ========== LOGIN / SIGNUP MODAL ========== -->
 <div class="modal-overlay" id="auth-modal">
     <div class="modal-box">
         <div class="modal-panel" id="login-panel">
@@ -44,6 +48,11 @@
         </div>
     </div>
 </div>
+<!-- ========== FLOATING TOAST ========== -->
+<div class="cafe-toast" id="cafe-toast">
+    <i class='bx bx-check-circle' id="toast-icon"></i>
+    <span id="toast-msg">Item added to your order!</span>
+</div>
 
 <!-- ========== CART SIDEBAR ========== -->
 <div class="cart-overlay" id="cart-overlay"></div>
@@ -62,726 +71,2006 @@
     <div class="cart-total" id="cart-total-section" style="display:none;">
         <div class="cart-total-row">
             <span>Total</span>
-            <strong id="cart-total-price">&#8377;0</strong>
+            <span id="cart-total-amount">&#8377;0</span>
         </div>
-        <button class="btn cart-order-btn">Confirm Order (In-Store)</button>
+        <button class="btn checkout-btn" id="cart-checkout-btn">
+            <i class='bx bx-check-circle'></i> Place In-Store Order
+        </button>
     </div>
 </div>
 
-<header>
+<!-- ========== HEADER ========== -->
+<header id="header">
+
+    <!-- LOGO -->
     <a href="#home" class="logo">
-        <img src="assets/logo_new.jpg" alt="Chai & Chapter">
+        <img src="assets/hero.jpg" alt="Chai & Chapter Logo">
+
         <div>
             <h2>Chai & Chapter</h2>
             <span>Book Café & Nooks</span>
         </div>
     </a>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#nook-showcase">Reading Nooks</a>
-        <a href="#reservation">Reserve</a>
-        <a href="#menu">Menu</a>
-        <a href="#chef">Our Chef</a>
-        <a href="#events">Events</a>
-        <a href="#reviews">Reviews</a>
-    </nav>
 
-    <div class="header-right">
-        <button class="cart-btn" id="open-cart" title="View Cart">
-            <i class='bx bx-cart'></i>
-            <span class="cart-count" id="cart-count">0</span>
-        </button>
+    <!-- NAVIGATION -->
+    <div class="nav-wrapper">
+        <nav id="navbar">
 
-        <button class="header-btn" id="open-login">
-            <i class='bx bx-user'></i>
-            <span>Login</span>
-        </button>
+            <a href="#home" class="active">
+                Home
+            </a>
+
+            <a href="#nook-showcase">
+                Reading Nooks
+            </a>
+
+            <a href="#books">
+                Library
+            </a>
+
+            <a href="#chef">
+                Chef's Story
+            </a>
+
+            <a href="#menu">
+                In-Store Menu
+            </a>
+
+            <a href="#reservation">
+                Reservations
+            </a>
+
+            <a href="#events">
+                Events
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#reviews">
+                Reviews
+            </a>
+
+        </nav>
     </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="header-right">
+
+        <!-- CART -->
+        <button
+            class="cart-btn"
+            id="open-cart"
+            aria-label="Open Cart"
+            title="View Cart"
+        >
+
+            <i class='bx bx-cart'></i>
+
+            <span
+                class="cart-count"
+                id="cart-count"
+            >
+                0
+            </span>
+
+        </button>
+
+
+        <!-- LOGIN -->
+        <button
+    class="auth-btn"
+    id="open-login"
+    type="button"
+>
+    <i class='bx bx-user'></i>
+    <span>Login</span>
+</button>
+
+    </div>
+
 </header>
  
-
-<!-- ========== CLASSIC HOME HERO ========== -->
+<!-- ========== CLASSIC HOME HERO TRANSITION SLIDER ========== -->
 <section class="home" id="home">
-    <div class="home-container">
-        <div class="home-data">
-            <span class="home-label">Welcome to Your Urban Sanctuary</span>
-            <h1 class="home-title">Where every sip tells a story, and every corner holds a book.</h1>
-            <p class="home-description">
-                Experience the soulful fusion of steaming Kulhad Chai, handcrafted coffee, and quiet
-                reading nooks designed for deep focus, cozy conversations, and literature lovers.
-            </p>
-            <div class="home-buttons">
-                <a href="#reservation" class="btn home-btn-solid">
-                    <i class='bx bx-bookmark'></i> Reserve a Reading Nook
-                </a>
-                <a href="#menu" class="btn home-btn-ghost">
-                    <i class='bx bx-food-menu'></i> Explore Our Menu
-                </a>
-            </div>
+    <!-- Slide 0 -->
+    <div class="home-slide active" style="background-image: url('assets/hero.jpg');">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+            <span class="slide-badge"><i class='bx bxs-sparkles'></i> WHY CHAI & CHAPTER IS UNIQUE</span>
+            <h2>More Than A Coffee Shop &bull; A True Reader's Sanctuary</h2>
+            <p>Experience the soulful fusion of steaming Kulhad Chai, handcrafted coffee, and quiet reading nooks designed for deep focus.</p>
+            <a href="#reservation" class="btn home-btn-solid">Reserve a Reading Nook</a>
         </div>
+    </div>
+    
+    <!-- Slide 1: image_63 -->
+    <div class="home-slide" style="background-image: url('assets/image_63.jpeg');">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+            <span class="slide-badge"><i class='bx bx-book-heart'></i> Aesthetic Reading Corners</span>
+            <h2>Curated Cozy Nooks For Every Reader</h2>
+            <p>Settle into comfortable velvet seating surrounded by warm ambient lighting, mahogany shelves, and peaceful reading vibes.</p>
+            <a href="#nook-showcase" class="btn home-btn-solid">Explore Reading Nooks</a>
+        </div>
+    </div>
 
-        <div class="home-img-wrapper">
-            <img src="assets/hero.jpg" alt="Chai &amp; Chapter Café Scene" class="home-img">
+    <!-- Slide 2: image_65 -->
+    <div class="home-slide" style="background-image: url('assets/image_65.jpeg');">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+            <span class="slide-badge"><i class='bx bx-coffee-bean'></i> Handcrafted Brews &amp; Bakes</span>
+            <h2>Artisan Coffee, Sourdough &amp; Fresh Bakery</h2>
+            <p>Pair your chapter with velvety specialty coffee, artisanal baked treats, and warm pizzas prepared from scratch.</p>
+            <a href="#menu" class="btn home-btn-solid">Explore Our Menu</a>
         </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="home-slide" style="background-image: url('assets/library.jpg');">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+            <span class="slide-badge"><i class='bx bx-book-reader'></i> 100% Free Library</span>
+            <h2>2,000+ Curated Books &mdash; Always Free</h2>
+            <p>Unlike ordinary commercial caf&eacute;s, every shelf is open. Pick up bestsellers, classics, or manga and read peacefully.</p>
+            <a href="#books" class="btn home-btn-solid">Explore Library</a>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="home-slide" style="background-image: url('assets/space.jpg');">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+            <span class="slide-badge"><i class='bx bx-volume-mute'></i> Zero Distraction</span>
+            <h2>Zero-Distraction Sanctuary</h2>
+            <p>No noisy delivery riders or chaotic background rush. We cultivate an intentional sanctuary for deep focus.</p>
+            <a href="#nook-showcase" class="btn home-btn-solid">Explore Nooks</a>
+        </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="home-slide" style="background-image: url('assets/chhai.jpg');">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+            <span class="slide-badge"><i class='bx bx-coffee-togo'></i> Kulhad Chai Craft</span>
+            <h2>Authentic Clay-Pot Kulhad Chai</h2>
+            <p>Brewed slow over open flames with crushed aromatic spices, poured into earthen terracotta cups.</p>
+            <a href="#menu" class="btn home-btn-solid">View Menu</a>
+        </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="home-slide" style="background-image: url('assets/sing.jpg');">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+            <span class="slide-badge"><i class='bx bx-microphone'></i> Acoustic Nights</span>
+            <h2>Live Acoustic &amp; Open Mics</h2>
+            <p>When the sun sets, our space transforms. Gentle guitar strings, poetry reading, and indie storytelling.</p>
+            <a href="#events" class="btn home-btn-solid">View Events</a>
+        </div>
+    </div>
+
+    <!-- Slide Nav -->
+    <div class="home-nav">
+        <div class="dot active" data-slide="0"></div>
+        <div class="dot" data-slide="1"></div>
+        <div class="dot" data-slide="2"></div>
+        <div class="dot" data-slide="3"></div>
+        <div class="dot" data-slide="4"></div>
+        <div class="dot" data-slide="5"></div>
+        <div class="dot" data-slide="6"></div>
     </div>
 </section>
 
-<!-- ========== NOOKS SHOWCASE: WHY GUESTS LOVE EACH NOOK ========== -->
+<!-- ========== NOOKS SHOWCASE (SWIPEABLE SLIDER) ========== -->
 <section class="section nooks-showcase" id="nook-showcase">
     <div class="heading">
         <span>EXPERIENCE OUR SPACES</span>
         <h2>Choose Your Perfect Reading Vibe</h2>
         <p class="section-subtext">Every corner in Chai &amp; Chapter is designed with purpose. Which atmosphere fits your mood today?</p>
     </div>
-
-    <div class="nooks-grid">
-        <!-- 1. Window Nook -->
-        <div class="nook-card">
-            <div class="nook-card-img">
-                <img src="assets/window_nook.jpeg" alt="Window Reading Nook">
-                <span class="nook-pill">Sunlight &amp; Rain Views</span>
-            </div>
-            <div class="nook-card-body">
-                <div class="nook-header-row">
-                    <h3>Window Reading Nook</h3>
-                    <i class='bx bx-sun'></i>
-                </div>
-                <p>
-                    Soft natural morning light, rainy window drops, and a warm ceramic cup. 
-                    Furnished with plush cushions and wide wooden sills for daydreamers and solo fiction readers.
-                </p>
-                <div class="nook-features">
-                    <span><i class='bx bx-check'></i> Natural Daylighting</span>
-                    <span><i class='bx bx-check'></i> Street &amp; Rain Views</span>
-                    <span><i class='bx bx-check'></i> Dedicated Reading Lamp</span>
-                </div>
-                <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Window Reading Nook')">
-                    Reserve Window Nook
-                </a>
-            </div>
+        
+    <div class="nooks-slider-wrapper" style="position: relative;">
+        <div class="slider-controls nooks-controls">
+            <button class="nav-btn" id="nooks-prev-btn" aria-label="Previous nook"><i class='bx bx-chevron-left'></i></button>
+            <button class="nav-btn" id="nooks-next-btn" aria-label="Next nook"><i class='bx bx-chevron-right'></i></button>
         </div>
+        <div class="nooks-grid" id="nooks-slider">
+            <!-- 1. Window Nook -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/window_nook.jpeg" alt="Window Reading Nook" loading="lazy">
+                    <span class="nook-pill">Sunlight &amp; Rain Views</span>
+                </div>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Window Reading Nook</h3>
+                        <i class='bx bx-sun'></i>
+                    </div>
+                    <p>Soft natural morning light, rainy window drops, and a warm ceramic cup. Furnished with plush cushions and wide wooden sills for daydreamers.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Natural Daylighting</span>
+                        <span><i class='bx bx-check'></i> Street &amp; Rain Views</span>
+                        <span><i class='bx bx-check'></i> Dedicated Reading Lamp</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Window Reading Nook')">
+                        Reserve Window Nook
+                    </a>
+                </div>
+            </div>
 
-        <!-- 2. Library Corner -->
-        <div class="nook-card">
-            <div class="nook-card-img">
-                <img src="assets/bookshelf.jpg" alt="Library Corner">
-                <span class="nook-pill">Quiet Deep Reading</span>
-            </div>
-            <div class="nook-card-body">
-                <div class="nook-header-row">
-                    <h3>Library Corner</h3>
-                    <i class='bx bx-book-bookmark'></i>
+            <!-- 2. Library Corner -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/bookshelf.jpg" alt="Library Bookshelf Corner" loading="lazy">
+                    <span class="nook-pill">Quiet Deep Reading</span>
                 </div>
-                <p>
-                    Tucked right against our floor-to-ceiling mahogany bookshelves. 
-                    Strict silent zone with deep armchairs, perfect for research, classic literature, and journal writing.
-                </p>
-                <div class="nook-features">
-                    <span><i class='bx bx-check'></i> 2,000+ Curated Titles</span>
-                    <span><i class='bx bx-check'></i> Whisper-Quiet Zone</span>
-                    <span><i class='bx bx-check'></i> Laptop Power Plugs</span>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Library Bookshelf Corner</h3>
+                        <i class='bx bx-book-bookmark'></i>
+                    </div>
+                    <p>Tucked right against our floor-to-ceiling mahogany bookshelves. Strict silent zone with deep armchairs for classic literature.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> 2,000+ Curated Titles</span>
+                        <span><i class='bx bx-check'></i> Whisper-Quiet Zone</span>
+                        <span><i class='bx bx-check'></i> Laptop Power Plugs</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Library Bookshelf Corner')">
+                        Reserve Bookshelf Nook
+                    </a>
                 </div>
-                <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Library Corner')">
-                    Reserve Library Corner
-                </a>
             </div>
-        </div>
 
-        <!-- 3. Garden Nook -->
-        <div class="nook-card">
-            <div class="nook-card-img">
-                <img src="assets/garden_nook.jpg" alt="Garden Nook">
-                <span class="nook-pill">Fresh Air &amp; Greenery</span>
-            </div>
-            <div class="nook-card-body">
-                <div class="nook-header-row">
-                    <h3>Garden Nook</h3>
-                    <i class='bx bx-leaf'></i>
+            <!-- 3. Garden Courtyard -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/garden_nook.jpg" alt="Garden & Courtyard Nook" loading="lazy">
+                    <span class="nook-pill">Fresh Air &amp; Flora</span>
                 </div>
-                <p>
-                    Breathe easy among green ferns, cascading vines, and gentle breeze. 
-                    Enjoy hot kulhad chai and crispy snacks while reading nature writing or poetry in open air.
-                </p>
-                <div class="nook-features">
-                    <span><i class='bx bx-check'></i> Open-Air Greenery</span>
-                    <span><i class='bx bx-check'></i> Cool Evening Breeze</span>
-                    <span><i class='bx bx-check'></i> Artisanal Kulhad Chai</span>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Garden &amp; Courtyard Nook</h3>
+                        <i class='bx bx-leaf'></i>
+                    </div>
+                    <p>Semi-outdoor stone patio shaded by weeping figs and climbing jasmine. Enjoy mild evening breezes with steaming artisanal chai.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Open-Air Seating</span>
+                        <span><i class='bx bx-check'></i> Greenery &amp; Planters</span>
+                        <span><i class='bx bx-check'></i> Pet Friendly Patio</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Garden & Courtyard Nook')">
+                        Reserve Courtyard Nook
+                    </a>
                 </div>
-                <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Garden Nook')">
-                    Reserve Garden Nook
-                </a>
             </div>
-        </div>
 
-        <!-- 4. Couple's Reading Table -->
-        <div class="nook-card">
-            <div class="nook-card-img">
-                <img src="assets/couple.jpeg" alt="Couple's Reading Table">
-                <span class="nook-pill">Cozy &amp; Intimate</span>
+            <!-- 4. Couple Table -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/couple.jpeg" alt="Couple's Reading Table" loading="lazy">
+                    <span class="nook-pill">Intimate 2-Seater</span>
+                </div>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Couple's Reading Table</h3>
+                        <i class='bx bx-heart'></i>
+                    </div>
+                    <p>Soft candlelight, warm wood grain, and private booth corners. Ideal for quiet dates, shared book discussions, and warm chai.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Intimate Low Lighting</span>
+                        <span><i class='bx bx-check'></i> Shared Tea Tier Stands</span>
+                        <span><i class='bx bx-check'></i> Private Booth Corner</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Couple's Reading Table')">
+                        Reserve Couple Table
+                    </a>
+                </div>
             </div>
-            <div class="nook-card-body">
-                <div class="nook-header-row">
-                    <h3>Couple's Reading Table</h3>
-                    <i class='bx bx-heart'></i>
+
+            <!-- 5. Vintage Chaise -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/image_78.jpeg" alt="Vintage Chaise Alcove" loading="lazy">
+                    <span class="nook-pill">Velvet Lounging</span>
                 </div>
-                <p>
-                    A romantic candlelit corner with twin comfortable chairs. 
-                    Share book recommendations, discuss favorite chapters, and enjoy shared dessert platters together.
-                </p>
-                <div class="nook-features">
-                    <span><i class='bx bx-check'></i> Intimate Warm Lighting</span>
-                    <span><i class='bx bx-check'></i> 2-Person Seating</span>
-                    <span><i class='bx bx-check'></i> Dessert Platter Menu</span>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Vintage Chaise Alcove</h3>
+                        <i class='bx bx-chair'></i>
+                    </div>
+                    <p>Recline on antique velvet chaise lounges beneath brass floor lamps. Designed for immersive multi-hour fantasy and fiction marathons.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Reclining Chaise</span>
+                        <span><i class='bx bx-check'></i> Adjustable Warm Brass Lamp</span>
+                        <span><i class='bx bx-check'></i> Soft Cashmere Throw</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Vintage Chaise Alcove')">
+                        Reserve Chaise Alcove
+                    </a>
                 </div>
-                <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Couple\'s Reading Table')">
-                    Reserve Couple's Table
-                </a>
+            </div>
+
+            <!-- 6. Study Alcove -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/image_72.jpeg" alt="Mid-Century Study Alcove" loading="lazy">
+                    <span class="nook-pill">Deep Focus &amp; Power</span>
+                </div>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Mid-Century Study Alcove</h3>
+                        <i class='bx bx-edit-alt'></i>
+                    </div>
+                    <p>Solid teak writing desk equipped with warm task lighting, fast Wi-Fi, and dual international power outlets for productive study sessions.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Ergonomic Timber Desk</span>
+                        <span><i class='bx bx-check'></i> Fast Fiber Wi-Fi</span>
+                        <span><i class='bx bx-check'></i> Dual Power &amp; USB Ports</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Mid-Century Study Alcove')">
+                        Reserve Study Alcove
+                    </a>
+                </div>
+            </div>
+
+            <!-- 7. Gothic Noir -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/image_75.jpeg" alt="Gothic Noir Reading Lounge" loading="lazy">
+                    <span class="nook-pill">Moody &amp; Atmospheric</span>
+                </div>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Gothic Noir Reading Lounge</h3>
+                        <i class='bx bx-moon'></i>
+                    </div>
+                    <p>Dark walnut paneling, velvet wingback chairs, and antique candelabras. A moody atmosphere tailored for mystery, philosophy, and noir.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Wingback Leather Chair</span>
+                        <span><i class='bx bx-check'></i> Candelabra Ambient Light</span>
+                        <span><i class='bx bx-check'></i> Dark Academia Vibe</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Gothic Noir Reading Lounge')">
+                        Reserve Noir Lounge
+                    </a>
+                </div>
+            </div>
+
+            <!-- 8. Writers Balcony -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/image_66.jpeg" alt="Writers' Balcony & Hearth" loading="lazy">
+                    <span class="nook-pill">Terrace &amp; Community</span>
+                </div>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Writers' Balcony &amp; Hearth</h3>
+                        <i class='bx bx-wind'></i>
+                    </div>
+                    <p>Overlooking our courtyard terrace with handcrafted wood communal tables. A collaborative haven for poets, journalists, and manuscript drafts.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Terrace Garden View</span>
+                        <span><i class='bx bx-check'></i> Communal Oak Table</span>
+                        <span><i class='bx bx-check'></i> Electric Hearth Warmth</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Writers' Balcony & Hearth')">
+                        Reserve Writers' Balcony
+                    </a>
+                </div>
+            </div>
+
+            <!-- 9. Mezzanine Loft -->
+            <div class="nook-card">
+                <div class="nook-card-img">
+                    <img src="assets/image_61.jpeg" alt="Mezzanine Loft Library" loading="lazy">
+                    <span class="nook-pill">Upper Deck Solitude</span>
+                </div>
+                <div class="nook-card-body">
+                    <div class="nook-header-row">
+                        <h3>Mezzanine Loft Library</h3>
+                        <i class='bx bx-bookmark-alt'></i>
+                    </div>
+                    <p>Perched high above the main cafÃ© floor via a spiral oak staircase. Complete seclusion surrounded by rare poetry collections.</p>
+                    <div class="nook-features">
+                        <span><i class='bx bx-check'></i> Elevated Overview</span>
+                        <span><i class='bx bx-check'></i> Complete Solitude</span>
+                        <span><i class='bx bx-check'></i> Rare Poetry Section</span>
+                    </div>
+                    <a href="#reservation" class="btn outline nook-book-btn" onclick="selectNookOption('Mezzanine Loft Library')">
+                        Reserve Mezzanine Loft
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ========== HOW IT WORKS ========== -->
-<section class="section how-it-works" id="services">
+<section class="section how-it-works">
     <div class="heading">
-        <span>HOW IT WORKS</span>
-        <h2>Your Seamless Café &amp; Nook Experience</h2>
+        <span>YOUR SANCTUARY EXPERIENCE</span>
+        <h2>How Chai &amp; Chapter Works</h2>
+        <p class="section-subtext">Four simple steps to your most peaceful afternoon in Hyderabad.</p>
     </div>
     <div class="service-container">
         <div class="service-box">
-            <div class="service-num">1</div>
-            <i class='bx bx-bookmark-alt'></i>
-            <h3>Pick Your Nook</h3>
-            <p>Reserve online or arrive, scan our desk QR, and find your favorite corner.</p>
+            <div class="step-num">01</div>
+            <i class='bx bx-calendar-star'></i>
+            <h3>Reserve Your Nook</h3>
+            <p>Choose your preferred reading vibe online &mdash; completely free of charge. Your nook is held for 15 minutes past your arrival.</p>
         </div>
         <div class="service-box">
-            <div class="service-num">2</div>
-            <i class='bx bx-book-open'></i>
-            <h3>Grab Any Book</h3>
-            <p>Browse 2,000+ free-to-read novels, poetry, history, and manga collections.</p>
+            <div class="step-num">02</div>
+            <i class='bx bx-book-reader'></i>
+            <h3>Pick Any Free Book</h3>
+            <p>Select any title from our curated 18+ books or browse 2,000+ shelves in person. Free to read during your stay.</p>
         </div>
         <div class="service-box">
-            <div class="service-num">3</div>
+            <div class="step-num">03</div>
             <i class='bx bx-coffee-togo'></i>
-            <h3>Order From Table</h3>
-            <p>Select pizzas, chai, or desserts straight from this website. Collect hot at counter!</p>
+            <h3>Sip &amp; Savor</h3>
+            <p>Order freshly brewed kulhad chai, signature pour-overs, and artisan bites delivered right to your nook.</p>
         </div>
         <div class="service-box">
-            <div class="service-num">4</div>
+            <div class="step-num">04</div>
             <i class='bx bx-heart-circle'></i>
-            <h3>Unwind &amp; Enjoy</h3>
-            <p>No rushing. Soak in the acoustic music, aroma of fresh bakes, and peaceful vibes.</p>
+            <h3>Read, Unplug &amp; Repeat</h3>
+            <p>No rush, no hourly timers. Stay as long as your chapter takes, connect to fast Wi-Fi, and join our community.</p>
         </div>
     </div>
 </section>
 
-<!-- ========== CHEF + REVIEWS SECTION (MRKing Style on White) ========== -->
-<section class="chef-section" id="chef">
-    <div class="chef-inner">
-        <!-- LEFT: Chef image floating on white -->
-        <div class="chef-img-col">
-            <img src="assets/chef.jpg" alt="Our Chef" class="chef-img">
+<!-- ========== 18 BOOKS SECTION ========== -->
+<section class="section books-section" id="books">
+    <div class="heading">
+        <span>OUR IN-HOUSE LIBRARY &bull; 100% FREE TO READ</span>
+        <h2>Curated Books for Every Soul</h2>
+        <p class="section-subtext">All books in our library are 100% free to read in-house. Click "Read in Nook" on any book to reserve it with your table!</p>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="books-filter-container">
+        <button class="book-cat-btn active" data-genre="all">
+            <i class='bx bx-grid-alt'></i> All Books (<span class="book-cat-count">18</span>)
+        </button>
+        <button class="book-cat-btn" data-genre="classics">
+            <i class='bx bx-book-bookmark'></i> Classics &amp; Fiction (<span class="book-cat-count">6</span>)
+        </button>
+        <button class="book-cat-btn" data-genre="mystery-history">
+            <i class='bx bx-search-alt'></i> Mystery, History &amp; Sci-Fi (<span class="book-cat-count">6</span>)
+        </button>
+        <button class="book-cat-btn" data-genre="romance">
+            <i class='bx bxs-heart'></i> Romance &amp; Contemporary (<span class="book-cat-count">6</span>)
+        </button>
+    </div>
+
+    <!-- Books Slider -->
+    <div class="books-slider-container" id="books-slider-container">
+        <button class="slider-btn prev-btn" id="books-prev-btn" aria-label="Previous books">
+            <i class='bx bx-chevron-left'></i>
+        </button>
+
+        <div class="books-slider" id="books-slider">
+            
+            <div class="book-box" data-genre="classics">
+                <div class="book-img-wrap">
+                    <img src="assets/books/great_gatsby.jpg" alt="The Great Gatsby by F. Scott Fitzgerald" loading="lazy">
+                    <span class="book-genre-pill">Classics & Fiction</span>
+                    <span class="book-tag">Must Read</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.8</span>
+                        <span class="book-rating-count">(12.4K)</span>
+                    </div>
+                    <h3>The Great Gatsby</h3>
+                    <span class="book-author">F. Scott Fitzgerald</span>
+                    <p>A jazz-age masterpiece exploring wealth, obsession, and elusive dreams amidst roaring 1920s parties.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Great Gatsby')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="classics">
+                <div class="book-img-wrap">
+                    <img src="assets/books/book_thief.jpg" alt="The Book Thief by Markus Zusak" loading="lazy">
+                    <span class="book-genre-pill">Historical Fiction</span>
+                    <span class="book-tag">Heartbreaking</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.9</span>
+                        <span class="book-rating-count">(20.1K)</span>
+                    </div>
+                    <h3>The Book Thief</h3>
+                    <span class="book-author">Markus Zusak</span>
+                    <p>Narrated by Death itself, a haunting story of a young girl stealing books in Nazi Germany during World War II.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Book Thief')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="romance">
+                <div class="book-img-wrap">
+                    <img src="assets/books/pride_prejudice.jpg" alt="Pride and Prejudice by Jane Austen" loading="lazy">
+                    <span class="book-genre-pill">Romance & Drama</span>
+                    <span class="book-tag">Timeless Classic</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.9</span>
+                        <span class="book-rating-count">(15.8K)</span>
+                    </div>
+                    <h3>Pride and Prejudice</h3>
+                    <span class="book-author">Jane Austen</span>
+                    <p>Witty banter, social satire, and timeless romantic tension between Elizabeth Bennet and Mr. Darcy.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('Pride and Prejudice')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="classics">
+                <div class="book-img-wrap">
+                    <img src="assets/books/mockingbird.jpg" alt="To Kill a Mockingbird by Harper Lee" loading="lazy">
+                    <span class="book-genre-pill">Classics & Fiction</span>
+                    <span class="book-tag">Pulitzer Winner</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.9</span>
+                        <span class="book-rating-count">(14.1K)</span>
+                    </div>
+                    <h3>To Kill a Mockingbird</h3>
+                    <span class="book-author">Harper Lee</span>
+                    <p>A deeply moving tale of racial justice, childhood innocence, and unwavering moral courage in the American South.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('To Kill a Mockingbird')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="classics">
+                <div class="book-img-wrap">
+                    <img src="assets/books/midnight_library.jpg" alt="The Midnight Library by Matt Haig" loading="lazy">
+                    <span class="book-genre-pill">Contemporary Fiction</span>
+                    <span class="book-tag">Life-Changing</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.8</span>
+                        <span class="book-rating-count">(18.7K)</span>
+                    </div>
+                    <h3>The Midnight Library</h3>
+                    <span class="book-author">Matt Haig</span>
+                    <p>Between life and death lies a library of infinite possibilities — a story about all the lives we could have lived.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Midnight Library')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="mystery-history">
+                <div class="book-img-wrap">
+                    <img src="assets/books/shadow_wind.jpg" alt="The Shadow of the Wind by Carlos Ruiz Zafon" loading="lazy">
+                    <span class="book-genre-pill">Gothic Mystery</span>
+                    <span class="book-tag">Atmospheric</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.8</span>
+                        <span class="book-rating-count">(14.5K)</span>
+                    </div>
+                    <h3>The Shadow of the Wind</h3>
+                    <span class="book-author">Carlos Ruiz Zaf&#243;n</span>
+                    <p>Set in post-war Barcelona, a boy discovers a mysterious book whose author seems to have been erased from history.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Shadow of the Wind')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="mystery-history">
+                <div class="book-img-wrap">
+                    <img src="assets/books/dorian_gray.jpg" alt="The Picture of Dorian Gray by Oscar Wilde" loading="lazy">
+                    <span class="book-genre-pill">Gothic Fiction</span>
+                    <span class="book-tag">Philosophical</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.7</span>
+                        <span class="book-rating-count">(11.2K)</span>
+                    </div>
+                    <h3>The Picture of Dorian Gray</h3>
+                    <span class="book-author">Oscar Wilde</span>
+                    <p>A gothic tale of hedonism, vanity, and the dark cost of eternal youth in Victorian London.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Picture of Dorian Gray')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="romance">
+                <div class="book-img-wrap">
+                    <img src="assets/books/alchemist.jpg" alt="The Alchemist by Paulo Coelho" loading="lazy">
+                    <span class="book-genre-pill">Inspirational</span>
+                    <span class="book-tag">Global Bestseller</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.7</span>
+                        <span class="book-rating-count">(22.5K)</span>
+                    </div>
+                    <h3>The Alchemist</h3>
+                    <span class="book-author">Paulo Coelho</span>
+                    <p>An inspiring fable about Santiago's journey across deserts in pursuit of his Personal Legend.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Alchemist')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="classics">
+                <div class="book-img-wrap">
+                    <img src="assets/books/wonder_india.jpg" alt="The Wonder That Was India by A.L. Basham" loading="lazy">
+                    <span class="book-genre-pill">Cultural History</span>
+                    <span class="book-tag">Timeless</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.7</span>
+                        <span class="book-rating-count">(5.8K)</span>
+                    </div>
+                    <h3>The Wonder That Was India</h3>
+                    <span class="book-author">A.L. Basham</span>
+                    <p>A comprehensive, beautifully written celebration of India&#39;s ancient culture, art, philosophy, and civilisation.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Wonder That Was India')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="mystery-history">
+                <div class="book-img-wrap">
+                    <img src="assets/books/fellowship_ring.jpg" alt="The Fellowship of the Ring by J.R.R. Tolkien" loading="lazy">
+                    <span class="book-genre-pill">Epic Fantasy</span>
+                    <span class="book-tag">Legendary</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.9</span>
+                        <span class="book-rating-count">(19.4K)</span>
+                    </div>
+                    <h3>The Fellowship of the Ring</h3>
+                    <span class="book-author">J.R.R. Tolkien</span>
+                    <p>The monumental epic high-fantasy adventure of hobbits, elves, wizards, and the One Ring of power.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Fellowship of the Ring')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="mystery-history">
+                <div class="book-img-wrap">
+                    <img src="assets/books/orient_express.jpg" alt="Murder on the Orient Express by Agatha Christie" loading="lazy">
+                    <span class="book-genre-pill">Mystery Thriller</span>
+                    <span class="book-tag">Queen of Crime</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.8</span>
+                        <span class="book-rating-count">(13.8K)</span>
+                    </div>
+                    <h3>Murder on the Orient Express</h3>
+                    <span class="book-author">Agatha Christie</span>
+                    <p>Detective Hercule Poirot unravels a locked-room train murder mystery on the snowbound luxury express.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('Murder on the Orient Express')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="mystery-history">
+                <div class="book-img-wrap">
+                    <img src="assets/books/the_anarchy.jpg" alt="The Anarchy by William Dalrymple" loading="lazy">
+                    <span class="book-genre-pill">History &amp; Non-Fiction</span>
+                    <span class="book-tag">Indian History</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.8</span>
+                        <span class="book-rating-count">(8.3K)</span>
+                    </div>
+                    <h3>The Anarchy</h3>
+                    <span class="book-author">William Dalrymple</span>
+                    <p>The gripping story of how the East India Company took over much of India and caused one of history&#39;s greatest catastrophes.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Anarchy')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="romance">
+                <div class="book-img-wrap">
+                    <img src="assets/books/norwegian_wood.jpg" alt="Norwegian Wood by Haruki Murakami" loading="lazy">
+                    <span class="book-genre-pill">Contemporary Fiction</span>
+                    <span class="book-tag">Modern Icon</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.7</span>
+                        <span class="book-rating-count">(9.8K)</span>
+                    </div>
+                    <h3>Norwegian Wood</h3>
+                    <span class="book-author">Haruki Murakami</span>
+                    <p>A poignant, nostalgic story of loss, emerging sexuality, and melancholy Tokyo student life in the 1960s.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('Norwegian Wood')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="romance">
+                <div class="book-img-wrap">
+                    <img src="assets/books/song_achilles.jpg" alt="The Song of Achilles by Madeline Miller" loading="lazy">
+                    <span class="book-genre-pill">Mythological Romance</span>
+                    <span class="book-tag">Orange Prize</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.9</span>
+                        <span class="book-rating-count">(17.3K)</span>
+                    </div>
+                    <h3>The Song of Achilles</h3>
+                    <span class="book-author">Madeline Miller</span>
+                    <p>A breathtaking, lyrical retelling of the Iliad following the deep bond between Achilles and Patroclus.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Song of Achilles')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="romance">
+                <div class="book-img-wrap">
+                    <img src="assets/books/book_lovers.jpg" alt="Book Lovers by Emily Henry" loading="lazy">
+                    <span class="book-genre-pill">Modern Romance</span>
+                    <span class="book-tag">BookTok Favorite</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.7</span>
+                        <span class="book-rating-count">(16.2K)</span>
+                    </div>
+                    <h3>Book Lovers</h3>
+                    <span class="book-author">Emily Henry</span>
+                    <p>A witty, enemies-to-lovers story between a literary agent and an editor who keep crossing paths in a small town.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('Book Lovers')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="romance">
+                <div class="book-img-wrap">
+                    <img src="assets/books/happy_place.jpg" alt="Happy Place by Emily Henry" loading="lazy">
+                    <span class="book-genre-pill">Contemporary Romance</span>
+                    <span class="book-tag">Feel Good</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.6</span>
+                        <span class="book-rating-count">(11.9K)</span>
+                    </div>
+                    <h3>Happy Place</h3>
+                    <span class="book-author">Emily Henry</span>
+                    <p>Two exes pretend to still be together during their last vacation at their favourite lake house &#8212; until feelings resurface.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('Happy Place')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="mystery-history">
+                <div class="book-img-wrap">
+                    <img src="assets/books/palace_illusions.jpg" alt="The Palace of Illusions by Chitra Banerjee Divakaruni" loading="lazy">
+                    <span class="book-genre-pill">Mythological Fiction</span>
+                    <span class="book-tag">Desi Classic</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.7</span>
+                        <span class="book-rating-count">(9.6K)</span>
+                    </div>
+                    <h3>The Palace of Illusions</h3>
+                    <span class="book-author">Chitra Banerjee Divakaruni</span>
+                    <p>The Mahabharata retold through the eyes of Draupadi &#8212; a powerful, feminist reimagining of one of India&#39;s greatest epics.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('The Palace of Illusions')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book-box" data-genre="mystery-history">
+                <div class="book-img-wrap">
+                    <img src="assets/books/india_history.jpg" alt="India: A History by John Keay" loading="lazy">
+                    <span class="book-genre-pill">History &amp; Non-Fiction</span>
+                    <span class="book-tag">Must Know</span>
+                </div>
+                <div class="book-info">
+                    <div class="book-rating">
+                        <div class="book-stars">
+                            <i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i>
+                        </div>
+                        <span class="book-rating-num">4.6</span>
+                        <span class="book-rating-count">(6.2K)</span>
+                    </div>
+                    <h3>India: A History</h3>
+                    <span class="book-author">John Keay</span>
+                    <p>A sweeping, authoritative journey through 5,000 years of Indian civilisation, from the Indus Valley to modern times.</p>
+                    <div class="book-footer">
+                        <span class="book-free-badge"><i class='bx bx-book-open'></i> Free In-House Read</span>
+                        <button class="btn book-reserve-btn" onclick="reserveBookForNook('India: A History')">
+                            <i class='bx bx-bookmark'></i> Read in Nook
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- RIGHT: Content like MRKing testimonials -->
+
+        <button class="slider-btn next-btn" id="books-next-btn" aria-label="Next books">
+            <i class='bx bx-chevron-right'></i>
+        </button>
+    </div>
+
+    <!-- Scroll Helper Bar -->
+    
+
+    <!-- View All Button -->
+    <div class="view-all-wrap">
+        <button class="view-all-btn" id="books-view-all-btn" onclick="openCatalogModal('books')">
+            <i class='bx bx-grid-alt'></i>
+            <span>View More / All 18 Books</span>
+        </button>
+    </div>
+</section>
+
+<!-- ========== CHEF + REVIEWS SECTION ========== -->
+<section class="chef-section" id="chef">
+
+    <div class="chef-inner">
+
+        <!-- LEFT: CHEF IMAGE -->
+        <div class="chef-avatar">
+                    <img src="assets/chef.jpg" alt="Chef Aarav">
+                </div>
+
+        <!-- RIGHT: CHEF CONTENT -->
         <div class="chef-text-col">
+
             <span class="chef-tag">MEET OUR CHEF</span>
+
             <h2 class="chef-heading">
-                The Heart Behind<br>Every Bite
+                The Heart Behind<br>
+                Every Bite
             </h2>
+
             <p class="chef-review-quote">
                 "With over a decade of passion, Chef Aarav crafts every dish
-                with love and nostalgia — from perfectly brewed masala chai to
+                with love and nostalgia â€” from perfectly brewed masala chai to
                 freshly baked cookies. Every bite at Chai &amp; Chapter tells
                 a story of tradition, warmth and creativity."
             </p>
+
             <div class="chef-avatars-row">
+
                 <div class="chef-avatars">
                     <img src="assets/review1.jpeg" alt="Customer 1">
                     <img src="assets/review2.jpeg" alt="Customer 2">
                     <img src="assets/review3.jpeg" alt="Customer 3">
+
                     <span class="avatar-plus">+99</span>
                 </div>
+
                 <div class="chef-feedback-label">
                     <strong>Customers Feedbacks</strong>
                 </div>
+
             </div>
+
             <div class="chef-rating-row">
                 <i class='bx bxs-star chef-star'></i>
                 <strong>4.9</strong>
                 <span>(99+ Reviews)</span>
             </div>
+
         </div>
+
     </div>
+
 </section>
 
-<!-- ========== INTERACTIVE CATEGORIZED MENU ========== -->
+<!-- ========== OUR IN-STORE MENU SECTION ========== -->
 <section class="section" id="menu">
     <div class="heading">
         <span>OUR IN-STORE MENU</span>
         <h2>Handcrafted Chai, Bakes &amp; Bites</h2>
-        <p class="section-subtext">Click any category below to view all available varieties. Scan &amp; add to cart!</p>
+        <p class="section-subtext">Click any category below to view all available varieties. Swipe horizontally or click arrows to explore!</p>
     </div>
 
     <!-- Category Filter Tabs -->
     <div class="menu-categories" id="menu-categories">
         <button class="cat-btn active" data-category="all">
-            <i class='bx bx-grid-alt'></i> All Items
+            <i class='bx bx-grid-alt'></i> All Items (<span class="cat-count">67</span>)
         </button>
         <button class="cat-btn" data-category="pizzas">
-            <i class='bx bxs-pizza'></i> Pizzas (<span class="cat-count">5</span>)
+            <i class='bx bxs-pizza'></i> Pizzas (<span class="cat-count">9</span>)
         </button>
         <button class="cat-btn" data-category="chai-coffee">
-            <i class='bx bx-coffee'></i> Chai &amp; Coffee (<span class="cat-count">7</span>)
+            <i class='bx bx-coffee'></i> Chai &amp; Coffee (<span class="cat-count">17</span>)
         </button>
         <button class="cat-btn" data-category="sandwiches">
-            <i class='bx bx-baguette'></i> Sandwiches &amp; Bites (<span class="cat-count">4</span>)
+            <i class='bx bx-baguette'></i> Sandwiches &amp; Bites (<span class="cat-count">8</span>)
         </button>
         <button class="cat-btn" data-category="bakes">
-            <i class='bx bx-cake'></i> Bakes &amp; Desserts (<span class="cat-count">5</span>)
+            <i class='bx bx-cake'></i> Bakes &amp; Desserts (<span class="cat-count">11</span>)
         </button>
         <button class="cat-btn" data-category="milkshakes">
-            <i class='bx bx-drink'></i> Milkshakes (<span class="cat-count">5</span>)
+            <i class='bx bx-drink'></i> Milkshakes (<span class="cat-count">8</span>)
         </button>
         <button class="cat-btn" data-category="pasta">
-            <i class='bx bx-bowl-hot'></i> Pasta &amp; Mains (<span class="cat-count">1</span>)
+            <i class='bx bx-bowl-hot'></i> Pasta &amp; Mains (<span class="cat-count">14</span>)
         </button>
     </div>
 
-    <div class="menu-notice">
-        <i class='bx bx-store-alt'></i>
-        <span><strong>In-Store Ordering:</strong> No home delivery. Simply select items, add to cart, and collect at counter when ready!</span>
-    </div>
-
-    <!-- Menu Items Slider / Grid Container -->
-    <div class="slider-wrapper">
+    <!-- Products Slider with Arrows -->
+    <div class="products-slider-container" id="products-slider-container">
         <button class="slider-btn prev-btn" id="prev-btn" aria-label="Previous dishes">
             <i class='bx bx-chevron-left'></i>
         </button>
-        
+
         <div class="products-slider" id="products-slider">
             
-            <!-- ====== PIZZAS ====== -->
             <div class="product-box" data-category="pizzas">
                 <div class="product-img-wrap">
-                    <img src="assets/pizzas.jpg" alt="Classic Margherita Pizza">
-                    <span class="item-tag">Bestseller</span>
-                </div>
-                <div class="product-info">
-                    <h3>Margherita Basil Pizza</h3>
-                    <p>Thin crust loaded with fresh mozzarella, sweet Italian basil &amp; crushed tomato sauce.</p>
-                    <strong>&#8377;200</strong>
-                    <button class="btn add-cart-btn" data-name="Margherita Basil Pizza" data-price="200">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="pizzas">
-                <div class="product-img-wrap">
-                    <img src="assets/veggie_pizza.jpeg" alt="Farmhouse Veggie Pizza">
+                    <img src="assets/food/Farmhouse veggie pizza.jpg" alt="Farmhouse Veggie Pizza" loading="lazy">
                     <span class="item-tag">Chef's Special</span>
                 </div>
                 <div class="product-info">
                     <h3>Farmhouse Veggie Pizza</h3>
-                    <p>Crispy crust topped with bell peppers, sweet corn, black olives, onions &amp; herbs.</p>
-                    <strong>&#8377;220</strong>
-                    <button class="btn add-cart-btn" data-name="Farmhouse Veggie Pizza" data-price="220">
+                    <p>Crispy hand-stretched crust topped with crunchy bell peppers, sweet golden corn, red onions, black olives & 100% mozzarella.</p>
+                    <strong>&#8377;280</strong>
+                    <button class="btn add-cart-btn" data-name="Farmhouse Veggie Pizza" data-price="280">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
             <div class="product-box" data-category="pizzas">
                 <div class="product-img-wrap">
-                    <img src="assets/pizzas.jpg" alt="Spicy Paneer Tikka Pizza">
+                    <img src="assets/food/Spicy paneer tikka pizza.jpg" alt="Spicy Paneer Tikka Pizza" loading="lazy">
+                    <span class="item-tag">Bestseller</span>
                 </div>
                 <div class="product-info">
                     <h3>Spicy Paneer Tikka Pizza</h3>
-                    <p>Smoky tandoori paneer cubes, spiced tomato sauce, capsicum &amp; melting mozzarella.</p>
-                    <strong>&#8377;240</strong>
-                    <button class="btn add-cart-btn" data-name="Spicy Paneer Tikka Pizza" data-price="240">
+                    <p>Clay-oven roasted spicy paneer cubes, crisp capsicum, charred onion rings & house-made mint herb drizzle.</p>
+                    <strong>&#8377;320</strong>
+                    <button class="btn add-cart-btn" data-name="Spicy Paneer Tikka Pizza" data-price="320">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
             <div class="product-box" data-category="pizzas">
                 <div class="product-img-wrap">
-                    <img src="assets/pizzas.jpg" alt="Garden Mushroom & Olive Pizza">
-                </div>
-                <div class="product-info">
-                    <h3>Mushroom &amp; Olive Pizza</h3>
-                    <p>Garlic-sautéed button mushrooms, kalamata olives, dried oregano &amp; aged cheese.</p>
-                    <strong>&#8377;230</strong>
-                    <button class="btn add-cart-btn" data-name="Mushroom & Olive Pizza" data-price="230">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- ====== CHAI & COFFEE ====== -->
-            <div class="product-box" data-category="chai-coffee">
-                <div class="product-img-wrap">
-                    <img src="assets/chai.jpg" alt="Masala Chai">
-                    <span class="item-tag">Must Try</span>
-                </div>
-                <div class="product-info">
-                    <h3>Adrak Elaichi Masala Chai</h3>
-                    <p>Handcrafted Assam tea boiled with fresh crushed ginger, green cardamom &amp; clove.</p>
-                    <strong>&#8377;90</strong>
-                    <button class="btn add-cart-btn" data-name="Adrak Elaichi Masala Chai" data-price="90">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="chai-coffee">
-                <div class="product-img-wrap">
-                    <img src="assets/fc.jpeg" alt="South Indian Filter Coffee">
-                    <span class="item-tag">Authentic</span>
-                </div>
-                <div class="product-info">
-                    <h3>South Indian Filter Coffee</h3>
-                    <p>Traditional Chikmagalur dark roast decoction frothed with fresh whole milk.</p>
-                    <strong>&#8377;120</strong>
-                    <button class="btn add-cart-btn" data-name="South Indian Filter Coffee" data-price="120">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="chai-coffee">
-                <div class="product-img-wrap">
-                    <img src="assets/coffee.jpeg" alt="Café Cappuccino">
-                </div>
-                <div class="product-info">
-                    <h3>Café Cappuccino</h3>
-                    <p>Double espresso shot topped with thick microfoam and cocoa dust.</p>
-                    <strong>&#8377;150</strong>
-                    <button class="btn add-cart-btn" data-name="Café Cappuccino" data-price="150">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="chai-coffee">
-                <div class="product-img-wrap">
-                    <img src="assets/chai.jpg" alt="Kulhad Kesar Chai">
-                </div>
-                <div class="product-info">
-                    <h3>Royal Kesar Kulhad Chai</h3>
-                    <p>Earthy clay pot chai enriched with Kashmiri saffron strands &amp; dry fruit crush.</p>
-                    <strong>&#8377;110</strong>
-                    <button class="btn add-cart-btn" data-name="Royal Kesar Kulhad Chai" data-price="110">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- ====== SANDWICHES & BITES ====== -->
-            <div class="product-box" data-category="sandwiches">
-                <div class="product-img-wrap">
-                    <img src="assets/sandwich.jpg" alt="Grilled Cheese Sandwich">
+                    <img src="assets/food/Mushroom and olive pizza.jpg" alt="Mushroom & Olive Pizza" loading="lazy">
                     <span class="item-tag">Popular</span>
                 </div>
                 <div class="product-info">
-                    <h3>Crispy Grilled Sandwich</h3>
-                    <p>Golden toasted bread layered with spiced potato mash, mozzarella &amp; mint chutney.</p>
-                    <strong>&#8377;160</strong>
-                    <button class="btn add-cart-btn" data-name="Crispy Grilled Sandwich" data-price="160">
+                    <h3>Mushroom & Olive Pizza</h3>
+                    <p>SautÃ©ed button mushrooms, Kalamata black olives, fresh garden thyme & melted mozzarella on artisan dough.</p>
+                    <strong>&#8377;290</strong>
+                    <button class="btn add-cart-btn" data-name="Mushroom & Olive Pizza" data-price="290">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
-            <div class="product-box" data-category="sandwiches">
-                <div class="product-img-wrap">
-                    <img src="assets/samosa.jpg" alt="Classic Golden Samosa">
-                </div>
-                <div class="product-info">
-                    <h3>Golden Samosa (2 Pcs)</h3>
-                    <p>Crispy flaky crust with spiced cumin-potato filling, served with tamarind chutney.</p>
-                    <strong>&#8377;80</strong>
-                    <button class="btn add-cart-btn" data-name="Golden Samosa (2 Pcs)" data-price="80">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="sandwiches">
-                <div class="product-img-wrap">
-                    <img src="assets/sandwich.jpg" alt="Paneer Tikka Club Sandwich">
-                </div>
-                <div class="product-info">
-                    <h3>Paneer Club Sandwich</h3>
-                    <p>Triple-decker sandwich with spiced cottage cheese, cucumber &amp; mayo dressing.</p>
-                    <strong>&#8377;180</strong>
-                    <button class="btn add-cart-btn" data-name="Paneer Club Sandwich" data-price="180">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="sandwiches">
-                <div class="product-img-wrap">
-                    <img src="assets/chai.jpg" alt="Irani Bun Maska">
-                </div>
-                <div class="product-info">
-                    <h3>Irani Bun Maska</h3>
-                    <p>Soft sweet bun slathered with homemade whipped salted butter. Best dipped in chai!</p>
-                    <strong>&#8377;70</strong>
-                    <button class="btn add-cart-btn" data-name="Irani Bun Maska" data-price="70">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- ====== BAKES & DESSERTS ====== -->
-            <div class="product-box" data-category="bakes">
-                <div class="product-img-wrap">
-                    <img src="assets/cake.jpg" alt="Chocolate Fudge Cake">
-                    <span class="item-tag">Sweet Tooth</span>
-                </div>
-                <div class="product-info">
-                    <h3>Dark Chocolate Truffle Cake</h3>
-                    <p>Moist Belgian chocolate sponge enveloped in silky warm dark chocolate ganache.</p>
-                    <strong>&#8377;180</strong>
-                    <button class="btn add-cart-btn" data-name="Dark Chocolate Truffle Cake" data-price="180">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="bakes">
-                <div class="product-img-wrap">
-                    <img src="assets/biscuit.jpg" alt="Almond Cookies">
-                </div>
-                <div class="product-info">
-                    <h3>Almond Crunch Cookies (Pack)</h3>
-                    <p>Fresh oven-baked buttery cookies topped with sliced roasted Californian almonds.</p>
-                    <strong>&#8377;100</strong>
-                    <button class="btn add-cart-btn" data-name="Almond Crunch Cookies" data-price="100">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="bakes">
-                <div class="product-img-wrap">
-                    <img src="assets/cookies.jpeg" alt="Blueberry Tea Cake">
-                </div>
-                <div class="product-info">
-                    <h3>Blueberry Tea Cake Slice</h3>
-                    <p>Vanilla sponge cake infused with real blueberries and lemon zest crumble.</p>
-                    <strong>&#8377;130</strong>
-                    <button class="btn add-cart-btn" data-name="Blueberry Tea Cake Slice" data-price="130">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="bakes">
-                <div class="product-img-wrap">
-                    <img src="assets/brownie_icecream.jpeg" alt="Walnut Brownie">
-                </div>
-                <div class="product-info">
-                    <h3>Fudge Walnut Brownie</h3>
-                    <p>Warm dense chocolate brownie filled with toasted walnuts and drizzled with caramel.</p>
-                    <strong>&#8377;150</strong>
-                    <button class="btn add-cart-btn" data-name="Fudge Walnut Brownie" data-price="150">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- ====== MILKSHAKES ====== -->
-            <div class="product-box" data-category="milkshakes">
-                <div class="product-img-wrap">
-                    <img src="assets/loaded_shakes.jpeg" alt="Belgian Chocolate Milkshake">
-                    <span class="item-tag">Thick Shake</span>
-                </div>
-                <div class="product-info">
-                    <h3>Belgian Chocolate Milkshake</h3>
-                    <p>Ultra-thick rich chocolate ice cream blend topped with chocolate chips &amp; fudge.</p>
-                    <strong>&#8377;160</strong>
-                    <button class="btn add-cart-btn" data-name="Belgian Chocolate Milkshake" data-price="160">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="milkshakes">
-                <div class="product-img-wrap">
-                    <img src="assets/iced_coffee.jpeg" alt="Cold Coffee Thick Shake">
-                </div>
-                <div class="product-info">
-                    <h3>Cold Coffee Thick Shake</h3>
-                    <p>Chilled double espresso blended with creamy vanilla ice cream and milk froth.</p>
-                    <strong>&#8377;150</strong>
-                    <button class="btn add-cart-btn" data-name="Cold Coffee Thick Shake" data-price="150">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="milkshakes">
-                <div class="product-img-wrap">
-                    <img src="assets/loaded_shakes.jpeg" alt="Strawberry Cream Milkshake">
-                </div>
-                <div class="product-info">
-                    <h3>Strawberry Cream Milkshake</h3>
-                    <p>Sweet strawberry compote whipped with dairy milk and topped with berry drizzle.</p>
-                    <strong>&#8377;140</strong>
-                    <button class="btn add-cart-btn" data-name="Strawberry Cream Milkshake" data-price="140">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <div class="product-box" data-category="milkshakes">
-                <div class="product-img-wrap">
-                    <img src="assets/loaded_shakes.jpeg" alt="Classic Vanilla Milkshake">
-                </div>
-                <div class="product-info">
-                    <h3>Classic Vanilla Bean Shake</h3>
-                    <p>Pure Madagascar vanilla bean ice cream shaken with chilled whole milk.</p>
-                    <strong>&#8377;130</strong>
-                    <button class="btn add-cart-btn" data-name="Classic Vanilla Bean Shake" data-price="130">
-                        <i class='bx bx-cart-add'></i> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-
-            <!-- ====== NEW PIZZAS ====== -->
             <div class="product-box" data-category="pizzas">
                 <div class="product-img-wrap">
-                    <img src="assets/veggie_pizza.jpeg" alt="Loaded Veggie Garden Pizza">
-                    <span class="item-tag">Garden Fresh</span>
+                    <img src="assets/food/Cheese & Mushroom Pizza.jpeg" alt="Cheese & Mushroom Deluxe Pizza" loading="lazy">
+                    <span class="item-tag">Gourmet</span>
                 </div>
                 <div class="product-info">
-                    <h3>Loaded Garden Veggie Pizza</h3>
-                    <p>Broccoli, corn, red &amp; yellow capsicum, black olives on a rich mozzarella crust.</p>
-                    <strong>&#8377;250</strong>
-                    <button class="btn add-cart-btn" data-name="Loaded Garden Veggie Pizza" data-price="250">
+                    <h3>Cheese & Mushroom Deluxe Pizza</h3>
+                    <p>Double mozzarella cheese blend loaded with roasted wild mushrooms and cracked black pepper.</p>
+                    <strong>&#8377;310</strong>
+                    <button class="btn add-cart-btn" data-name="Cheese & Mushroom Deluxe Pizza" data-price="310">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
-            <!-- ====== NEW CHAI & COFFEE ====== -->
-            <div class="product-box" data-category="chai-coffee">
+            <div class="product-box" data-category="pizzas">
                 <div class="product-img-wrap">
-                    <img src="assets/iced_coffee.jpeg" alt="Iced Caramel Latte">
-                    <span class="item-tag">Café Favourite</span>
+                    <img src="assets/food/Mushroom & Spinach Pizza.jpeg" alt="Mushroom & Spinach Florentine Pizza" loading="lazy">
+                    <span class="item-tag">Fresh</span>
                 </div>
                 <div class="product-info">
-                    <h3>Iced Caramel Latte</h3>
-                    <p>Creamy espresso swirled with silky caramel milk over ice — perfect for any afternoon.</p>
-                    <strong>&#8377;160</strong>
-                    <button class="btn add-cart-btn" data-name="Iced Caramel Latte" data-price="160">
+                    <h3>Mushroom & Spinach Florentine Pizza</h3>
+                    <p>Tender baby spinach leaves, garlic butter sautÃ©ed mushrooms, creamy ricotta and mozzarella.</p>
+                    <strong>&#8377;300</strong>
+                    <button class="btn add-cart-btn" data-name="Mushroom & Spinach Florentine Pizza" data-price="300">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
-            <div class="product-box" data-category="chai-coffee">
+            <div class="product-box" data-category="pizzas">
                 <div class="product-img-wrap">
-                    <img src="assets/hot_chocolate.jpeg" alt="Marshmallow Hot Chocolate">
-                    <span class="item-tag">Winter Warmer</span>
+                    <img src="assets/food/image_10.jpeg" alt="Classic Margherita Pizza" loading="lazy">
+                    <span class="item-tag">Italian Classic</span>
                 </div>
                 <div class="product-info">
-                    <h3>Marshmallow Hot Chocolate</h3>
-                    <p>Rich velvety cocoa topped with toasted marshmallows, cocoa dust &amp; a chocolate bar.</p>
-                    <strong>&#8377;170</strong>
-                    <button class="btn add-cart-btn" data-name="Marshmallow Hot Chocolate" data-price="170">
+                    <h3>Classic Margherita Pizza</h3>
+                    <p>Authentic Neapolitan crust, San Marzano tomato sauce, fresh buffalo mozzarella & fragrant garden basil.</p>
+                    <strong>&#8377;260</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Margherita Pizza" data-price="260">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
+            <div class="product-box" data-category="pizzas">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Vegetable Pizza.jpeg" alt="Supreme Garden Veggie Pizza" loading="lazy">
+                    <span class="item-tag">Loaded</span>
+                </div>
+                <div class="product-info">
+                    <h3>Supreme Garden Veggie Pizza</h3>
+                    <p>Loaded with colorful sweet peppers, pickled jalapeÃ±os, onions, diced tomatoes and Italian herb blend.</p>
+                    <strong>&#8377;295</strong>
+                    <button class="btn add-cart-btn" data-name="Supreme Garden Veggie Pizza" data-price="295">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pizzas">
+                <div class="product-img-wrap">
+                    <img src="assets/food/veggie_pizza.jpeg" alt="Crispy Crust Veggie Delight Pizza" loading="lazy">
+                    <span class="item-tag">Crispy Crust</span>
+                </div>
+                <div class="product-info">
+                    <h3>Crispy Crust Veggie Delight Pizza</h3>
+                    <p>Thin and crispy crust baked golden with caramelized onions, zucchini, capsicum & mozzarella.</p>
+                    <strong>&#8377;285</strong>
+                    <button class="btn add-cart-btn" data-name="Crispy Crust Veggie Delight Pizza" data-price="285">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pizzas">
+                <div class="product-img-wrap">
+                    <img src="assets/food/pizzas.jpg" alt="Chef's Artisan Pizza Trio" loading="lazy">
+                    <span class="item-tag">Chef's Trio</span>
+                </div>
+                <div class="product-info">
+                    <h3>Chef's Artisan Pizza Trio</h3>
+                    <p>Handcrafted artisanal wood-fired personal crusts with assorted gourmet toppings and fresh herbs.</p>
+                    <strong>&#8377;360</strong>
+                    <button class="btn add-cart-btn" data-name="Chef's Artisan Pizza Trio" data-price="360">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
             <div class="product-box" data-category="chai-coffee">
                 <div class="product-img-wrap">
-                    <img src="assets/black_coffee.jpeg" alt="Steaming Black Coffee">
+                    <img src="assets/food/Ilachi masala chai.jpg" alt="Elaichi Masala Chai" loading="lazy">
+                    <span class="item-tag">CafÃ© Icon</span>
+                </div>
+                <div class="product-info">
+                    <h3>Elaichi Masala Chai</h3>
+                    <p>Slow-brewed single estate Assam tea leaves infused with green cardamom pods, crushed ginger & whole spices.</p>
+                    <strong>&#8377;90</strong>
+                    <button class="btn add-cart-btn" data-name="Elaichi Masala Chai" data-price="90">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/chai.jpg" alt="Kulhad Spiced Special Chai" loading="lazy">
+                    <span class="item-tag">Traditional</span>
+                </div>
+                <div class="product-info">
+                    <h3>Kulhad Spiced Special Chai</h3>
+                    <p>Steaming aromatic spiced tea served traditionally in an earthen clay kulhad for deep earthy notes.</p>
+                    <strong>&#8377;100</strong>
+                    <button class="btn add-cart-btn" data-name="Kulhad Spiced Special Chai" data-price="100">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/fc.jpeg" alt="South Indian Filter Coffee" loading="lazy">
+                    <span class="item-tag">Heritage Brew</span>
+                </div>
+                <div class="product-info">
+                    <h3>South Indian Filter Coffee</h3>
+                    <p>Authentic frothy chicory-blended decoction served piping hot in traditional brass dabarah and tumbler.</p>
+                    <strong>&#8377;110</strong>
+                    <button class="btn add-cart-btn" data-name="South Indian Filter Coffee" data-price="110">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/coffee.jpeg" alt="Roasted House Brew Filter Coffee" loading="lazy">
+                    <span class="item-tag">House Brew</span>
+                </div>
+                <div class="product-info">
+                    <h3>Roasted House Brew Filter Coffee</h3>
+                    <p>Freshly roasted specialty coffee beans brewed aromatic and strong for the discerning palate.</p>
+                    <strong>&#8377;120</strong>
+                    <button class="btn add-cart-btn" data-name="Roasted House Brew Filter Coffee" data-price="120">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Dark roast black coffee.jpg" alt="Dark Roast Black Coffee" loading="lazy">
+                    <span class="item-tag">Bold Roast</span>
                 </div>
                 <div class="product-info">
                     <h3>Dark Roast Black Coffee</h3>
-                    <p>Pure bold single-origin Ethiopian black coffee brewed to perfection. No sugar, no milk — just soul.</p>
-                    <strong>&#8377;100</strong>
-                    <button class="btn add-cart-btn" data-name="Dark Roast Black Coffee" data-price="100">
+                    <p>Single-origin pour over coffee with deep smoky cocoa undertones and a bold, clean finish.</p>
+                    <strong>&#8377;140</strong>
+                    <button class="btn add-cart-btn" data-name="Dark Roast Black Coffee" data-price="140">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
             <div class="product-box" data-category="chai-coffee">
                 <div class="product-img-wrap">
-                    <img src="assets/matcha_latte.jpeg" alt="Iced Matcha Latte">
-                    <span class="item-tag">New</span>
+                    <img src="assets/food/Black Coffee.jpeg" alt="House Americano Black Coffee" loading="lazy">
+                    <span class="item-tag">Americano</span>
                 </div>
                 <div class="product-info">
-                    <h3>Iced Matcha Oat Latte</h3>
-                    <p>Japanese ceremonial-grade matcha whisked smooth and poured over cold oat milk &amp; ice.</p>
-                    <strong>&#8377;180</strong>
-                    <button class="btn add-cart-btn" data-name="Iced Matcha Oat Latte" data-price="180">
+                    <h3>House Americano Black Coffee</h3>
+                    <p>Double shot of rich espresso topped with hot mountain spring water for a silky, smooth profile.</p>
+                    <strong>&#8377;130</strong>
+                    <button class="btn add-cart-btn" data-name="House Americano Black Coffee" data-price="130">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
-            <!-- ====== NEW BAKES & DESSERTS ====== -->
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Black Coffee (2).jpeg" alt="Reserve Dark Roast Espresso" loading="lazy">
+                    <span class="item-tag">Reserve</span>
+                </div>
+                <div class="product-info">
+                    <h3>Reserve Dark Roast Espresso</h3>
+                    <p>Intense velvet crema double espresso pulled from 100% Arabica dark roast beans.</p>
+                    <strong>&#8377;150</strong>
+                    <button class="btn add-cart-btn" data-name="Reserve Dark Roast Espresso" data-price="150">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Cappuccino.jpeg" alt="Classic Cappuccino" loading="lazy">
+                    <span class="item-tag">Barista Art</span>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Cappuccino</h3>
+                    <p>Velvety steamed whole milk poured over rich double espresso with delicate barista latte art.</p>
+                    <strong>&#8377;160</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Cappuccino" data-price="160">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Mini Coffee  Espresso Drinks.jpeg" alt="Mini Espresso Flight Duo" loading="lazy">
+                    <span class="item-tag">Coffee Flight</span>
+                </div>
+                <div class="product-info">
+                    <h3>Mini Espresso Flight Duo</h3>
+                    <p>A pairing flight featuring an artisan macchiato and a smooth cortado for coffee connoisseurs.</p>
+                    <strong>&#8377;210</strong>
+                    <button class="btn add-cart-btn" data-name="Mini Espresso Flight Duo" data-price="210">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Iced caramel latte.jpg" alt="Iced Caramel Latte" loading="lazy">
+                    <span class="item-tag">Bestseller</span>
+                </div>
+                <div class="product-info">
+                    <h3>Iced Caramel Latte</h3>
+                    <p>Chilled espresso, cold milk and buttery sea-salt caramel drizzle served over crystal ice.</p>
+                    <strong>&#8377;190</strong>
+                    <button class="btn add-cart-btn" data-name="Iced Caramel Latte" data-price="190">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Iced Coffee  Cold Coffee.jpeg" alt="Artisan Iced Coffee" loading="lazy">
+                    <span class="item-tag">Refreshing</span>
+                </div>
+                <div class="product-info">
+                    <h3>Artisan Iced Coffee</h3>
+                    <p>Cold brew concentrate shaken with chilled milk, light cane sugar and crushed ice.</p>
+                    <strong>&#8377;180</strong>
+                    <button class="btn add-cart-btn" data-name="Artisan Iced Coffee" data-price="180">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Iced Coffee.jpeg" alt="Signature Cold Brew Coffee" loading="lazy">
+                    <span class="item-tag">Cold Brew</span>
+                </div>
+                <div class="product-info">
+                    <h3>Signature Cold Brew Coffee</h3>
+                    <p>Slow-steeped for 18 hours creating ultra-smooth, naturally sweet coffee with zero bitterness.</p>
+                    <strong>&#8377;175</strong>
+                    <button class="btn add-cart-btn" data-name="Signature Cold Brew Coffee" data-price="175">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/image_27.jpeg" alt="Artisan Flavoured Iced Latte" loading="lazy">
+                    <span class="item-tag">Signature Syrup</span>
+                </div>
+                <div class="product-info">
+                    <h3>Artisan Flavoured Iced Latte</h3>
+                    <p>Layered chilled espresso infused with your choice of Monin hazelnut, French vanilla, or caramel syrup.</p>
+                    <strong>&#8377;205</strong>
+                    <button class="btn add-cart-btn" data-name="Artisan Flavoured Iced Latte" data-price="205">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Iced Matcha Latte.jpeg" alt="Iced Matcha Latte" loading="lazy">
+                    <span class="item-tag">Ceremonial</span>
+                </div>
+                <div class="product-info">
+                    <h3>Iced Matcha Latte</h3>
+                    <p>Ceremonial Uji matcha whisked fresh and layered over chilled oat or almond milk.</p>
+                    <strong>&#8377;210</strong>
+                    <button class="btn add-cart-btn" data-name="Iced Matcha Latte" data-price="210">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/matcha_latte.jpeg" alt="Kyoto Velvet Matcha Latte" loading="lazy">
+                    <span class="item-tag">Zen Ritual</span>
+                </div>
+                <div class="product-info">
+                    <h3>Kyoto Velvet Matcha Latte</h3>
+                    <p>Steamed creamy ceremonial matcha with velvety microfoam and delicate leaf latte art.</p>
+                    <strong>&#8377;220</strong>
+                    <button class="btn add-cart-btn" data-name="Kyoto Velvet Matcha Latte" data-price="220">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Marshemellow hot chocolate.jpg" alt="Marshmallow Hot Chocolate" loading="lazy">
+                    <span class="item-tag">Cozy Warmth</span>
+                </div>
+                <div class="product-info">
+                    <h3>Marshmallow Hot Chocolate</h3>
+                    <p>Rich melted dark chocolate simmered in whole milk, crowned with fluffy toasted marshmallows.</p>
+                    <strong>&#8377;200</strong>
+                    <button class="btn add-cart-btn" data-name="Marshmallow Hot Chocolate" data-price="200">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="chai-coffee">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Coffee with Cookies.jpeg" alt="Coffee & Cookies Combo" loading="lazy">
+                    <span class="item-tag">Combo Pair</span>
+                </div>
+                <div class="product-info">
+                    <h3>Coffee & Cookies Combo</h3>
+                    <p>Freshly pulled hot cappuccino served alongside two warm house-baked butter tea biscuits.</p>
+                    <strong>&#8377;220</strong>
+                    <button class="btn add-cart-btn" data-name="Coffee & Cookies Combo" data-price="220">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Paneer club sandwich.jpg" alt="Paneer Club Sandwich" loading="lazy">
+                    <span class="item-tag">Bestseller</span>
+                </div>
+                <div class="product-info">
+                    <h3>Paneer Club Sandwich</h3>
+                    <p>Triple-decker grilled sourdough filled with spiced cottage cheese, mint chutney & crunchy slaw.</p>
+                    <strong>&#8377;190</strong>
+                    <button class="btn add-cart-btn" data-name="Paneer Club Sandwich" data-price="190">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Grilled Cheese Sandwich with French Fries.jpeg" alt="Grilled Cheese & Fries Platter" loading="lazy">
+                    <span class="item-tag">Chef's Combo</span>
+                </div>
+                <div class="product-info">
+                    <h3>Grilled Cheese & Fries Platter</h3>
+                    <p>Molten three-cheese grilled sandwich on sourdough served with hot seasoned french fries.</p>
+                    <strong>&#8377;230</strong>
+                    <button class="btn add-cart-btn" data-name="Grilled Cheese & Fries Platter" data-price="230">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Grilled Cheese Sandwich.jpeg" alt="Gourmet 3-Cheese Melt" loading="lazy">
+                    <span class="item-tag">Triple Cheese</span>
+                </div>
+                <div class="product-info">
+                    <h3>Gourmet 3-Cheese Melt</h3>
+                    <p>Aged English cheddar, creamy mozzarella and gouda melted between butter-toasted brioche.</p>
+                    <strong>&#8377;190</strong>
+                    <button class="btn add-cart-btn" data-name="Gourmet 3-Cheese Melt" data-price="190">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Grilled cheese sandwich.jpg" alt="Classic Melty Grilled Cheese" loading="lazy">
+                    <span class="item-tag">Comfort Classic</span>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Melty Grilled Cheese</h3>
+                    <p>Golden skillet-toasted country bread packed with oozing melted cheddar cheese.</p>
+                    <strong>&#8377;180</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Melty Grilled Cheese" data-price="180">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/sandwich.jpg" alt="Garden Fresh Veggie Toastie" loading="lazy">
+                    <span class="item-tag">Garden Fresh</span>
+                </div>
+                <div class="product-info">
+                    <h3>Garden Fresh Veggie Toastie</h3>
+                    <p>Crisp cucumber, ripe tomatoes, beetroot, bell peppers and spiced green chutney toasted crisp.</p>
+                    <strong>&#8377;160</strong>
+                    <button class="btn add-cart-btn" data-name="Garden Fresh Veggie Toastie" data-price="160">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Irani bun maska.jpg" alt="Irani Bun Maska" loading="lazy">
+                    <span class="item-tag">Irani Special</span>
+                </div>
+                <div class="product-info">
+                    <h3>Irani Bun Maska</h3>
+                    <p>Warm pillow-soft sweet bun generously filled with whipped salted butter, perfect for dipping in chai.</p>
+                    <strong>&#8377;110</strong>
+                    <button class="btn add-cart-btn" data-name="Irani Bun Maska" data-price="110">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Vegetable Samosas.jpeg" alt="Crispy Vegetable Samosas (2 pcs)" loading="lazy">
+                    <span class="item-tag">Crispy Snack</span>
+                </div>
+                <div class="product-info">
+                    <h3>Crispy Vegetable Samosas (2 pcs)</h3>
+                    <p>Flaky golden pastry cones filled with spiced potatoes, green peas and served with sweet tamarind chutney.</p>
+                    <strong>&#8377;120</strong>
+                    <button class="btn add-cart-btn" data-name="Crispy Vegetable Samosas (2 pcs)" data-price="120">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="sandwiches">
+                <div class="product-img-wrap">
+                    <img src="assets/food/samosa.jpg" alt="Street-Style Golden Samosa" loading="lazy">
+                    <span class="item-tag">Chai Partner</span>
+                </div>
+                <div class="product-info">
+                    <h3>Street-Style Golden Samosa</h3>
+                    <p>Crisp hand-folded samosa bursting with cumin-spiced potatoes, accompanied by spicy mint dip.</p>
+                    <strong>&#8377;110</strong>
+                    <button class="btn add-cart-btn" data-name="Street-Style Golden Samosa" data-price="110">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
             <div class="product-box" data-category="bakes">
                 <div class="product-img-wrap">
-                    <img src="assets/brownie_icecream.jpeg" alt="Brownie with Ice Cream">
-                    <span class="item-tag">Indulgent</span>
+                    <img src="assets/food/Blueberry cheese cake slice.jpg" alt="Blueberry Cheesecake Slice" loading="lazy">
+                    <span class="item-tag">House Favorite</span>
                 </div>
                 <div class="product-info">
-                    <h3>Warm Brownie &agrave; la Mode</h3>
-                    <p>Gooey chocolate brownie crowned with a scoop of vanilla ice cream &amp; drizzled chocolate sauce.</p>
-                    <strong>&#8377;190</strong>
-                    <button class="btn add-cart-btn" data-name="Warm Brownie a la Mode" data-price="190">
+                    <h3>Blueberry Cheesecake Slice</h3>
+                    <p>Silky New York style baked cheesecake layered over buttery biscuit crust, topped with wild blueberries.</p>
+                    <strong>&#8377;220</strong>
+                    <button class="btn add-cart-btn" data-name="Blueberry Cheesecake Slice" data-price="220">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
-            <!-- ====== NEW MILKSHAKES ====== -->
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Fudge walnut brownie.jpg" alt="Fudge Walnut Brownie" loading="lazy">
+                    <span class="item-tag">Fudge Brownie</span>
+                </div>
+                <div class="product-info">
+                    <h3>Fudge Walnut Brownie</h3>
+                    <p>Dense, chewy Belgian dark chocolate fudge brownie studded with toasted California walnuts.</p>
+                    <strong>&#8377;170</strong>
+                    <button class="btn add-cart-btn" data-name="Fudge Walnut Brownie" data-price="170">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Chocolate Brownie.jpeg" alt="Warm Double Chocolate Brownie" loading="lazy">
+                    <span class="item-tag">Warm Bake</span>
+                </div>
+                <div class="product-info">
+                    <h3>Warm Double Chocolate Brownie</h3>
+                    <p>Decadent cocoa brownie with molten chocolate chunks and a delicate crackly crust.</p>
+                    <strong>&#8377;165</strong>
+                    <button class="btn add-cart-btn" data-name="Warm Double Chocolate Brownie" data-price="165">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/brownie_icecream.jpeg" alt="Sizzling Brownie with Ice Cream" loading="lazy">
+                    <span class="item-tag">Crowd Pleaser</span>
+                </div>
+                <div class="product-info">
+                    <h3>Sizzling Brownie with Ice Cream</h3>
+                    <p>Warm walnut brownie served sizzling with a generous scoop of vanilla bean ice cream & hot fudge.</p>
+                    <strong>&#8377;230</strong>
+                    <button class="btn add-cart-btn" data-name="Sizzling Brownie with Ice Cream" data-price="230">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Chocolate Cake.jpeg" alt="Belgian Dark Chocolate Cake" loading="lazy">
+                    <span class="item-tag">Decadent Ganache</span>
+                </div>
+                <div class="product-info">
+                    <h3>Belgian Dark Chocolate Cake</h3>
+                    <p>Rich three-layer sponge cake layered with silky dark chocolate ganache and chocolate curls.</p>
+                    <strong>&#8377;210</strong>
+                    <button class="btn add-cart-btn" data-name="Belgian Dark Chocolate Cake" data-price="210">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/cake.jpg" alt="Classic Victorian Sponge Cake" loading="lazy">
+                    <span class="item-tag">Victorian</span>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Victorian Sponge Cake</h3>
+                    <p>Light and airy vanilla sponge layered with whipped fresh cream and dusted powdered sugar.</p>
+                    <strong>&#8377;180</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Victorian Sponge Cake" data-price="180">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Chocolate Dessert  Pudding.jpeg" alt="Chocolate Silk Mousse Pudding" loading="lazy">
+                    <span class="item-tag">Silky Mousse</span>
+                </div>
+                <div class="product-info">
+                    <h3>Chocolate Silk Mousse Pudding</h3>
+                    <p>Airy, velvety chocolate mousse jar layered with chocolate crumb and dusted Dutch cocoa.</p>
+                    <strong>&#8377;180</strong>
+                    <button class="btn add-cart-btn" data-name="Chocolate Silk Mousse Pudding" data-price="180">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Mini Cake  Pastry.jpeg" alt="Petite Strawberry Cream Pastry" loading="lazy">
+                    <span class="item-tag">Petite Pastry</span>
+                </div>
+                <div class="product-info">
+                    <h3>Petite Strawberry Cream Pastry</h3>
+                    <p>Delicate layered pastry filled with fresh strawberry confit and whipped vanilla bean cream.</p>
+                    <strong>&#8377;160</strong>
+                    <button class="btn add-cart-btn" data-name="Petite Strawberry Cream Pastry" data-price="160">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Cookies  Biscuits.jpeg" alt="Artisan Bakery Biscuit Box" loading="lazy">
+                    <span class="item-tag">Artisan Box</span>
+                </div>
+                <div class="product-info">
+                    <h3>Artisan Bakery Biscuit Box</h3>
+                    <p>A crunchy box of handmade butter shortbread, almond biscotti, and sweet bakery cookies.</p>
+                    <strong>&#8377;140</strong>
+                    <button class="btn add-cart-btn" data-name="Artisan Bakery Biscuit Box" data-price="140">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/cookies.jpeg" alt="Chunky Choco-Chip Cookies (2 pcs)" loading="lazy">
+                    <span class="item-tag">Freshly Baked</span>
+                </div>
+                <div class="product-info">
+                    <h3>Chunky Choco-Chip Cookies (2 pcs)</h3>
+                    <p>Freshly baked golden brown cookies packed with melted Belgian dark chocolate chips.</p>
+                    <strong>&#8377;130</strong>
+                    <button class="btn add-cart-btn" data-name="Chunky Choco-Chip Cookies (2 pcs)" data-price="130">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="bakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/biscuit.jpg" alt="Heritage Chai Butter Biscuits" loading="lazy">
+                    <span class="item-tag">Tea-Time Classic</span>
+                </div>
+                <div class="product-info">
+                    <h3>Heritage Chai Butter Biscuits</h3>
+                    <p>Crisp and crumbly heritage bakery biscuits infused with cardamom and rich churned butter.</p>
+                    <strong>&#8377;100</strong>
+                    <button class="btn add-cart-btn" data-name="Heritage Chai Butter Biscuits" data-price="100">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
             <div class="product-box" data-category="milkshakes">
                 <div class="product-img-wrap">
-                    <img src="assets/loaded_shakes.jpeg" alt="Loaded Oreo & Caramel Milkshakes">
-                    <span class="item-tag">Loaded!</span>
+                    <img src="assets/food/Coassic vanilla bean shake.jpg" alt="Classic Vanilla Bean Shake" loading="lazy">
+                    <span class="item-tag">Classic</span>
                 </div>
                 <div class="product-info">
-                    <h3>Loaded Oreo Caramel Shake</h3>
-                    <p>Thick Oreo milkshake &amp; caramel fudge shake crowned with whipped cream, wafers &amp; chocolate drizzle.</p>
-                    <strong>&#8377;200</strong>
-                    <button class="btn add-cart-btn" data-name="Loaded Oreo Caramel Shake" data-price="200">
+                    <h3>Classic Vanilla Bean Shake</h3>
+                    <p>Thick, creamy blend of whole milk, double vanilla bean ice cream & whipped sweet cream.</p>
+                    <strong>&#8377;180</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Vanilla Bean Shake" data-price="180">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
-            <!-- ====== PASTA & MAINS ====== -->
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/vanilla_shake.png" alt="Silky French Vanilla Milkshake" loading="lazy">
+                    <span class="item-tag">Silky Smooth</span>
+                </div>
+                <div class="product-info">
+                    <h3>Silky French Vanilla Milkshake</h3>
+                    <p>Smooth creamy milkshake made with rich French vanilla bean custard and fresh milk.</p>
+                    <strong>&#8377;175</strong>
+                    <button class="btn add-cart-btn" data-name="Silky French Vanilla Milkshake" data-price="175">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Coassic vanilla bean shake.jpg" alt="Madagascar Vanilla Bean Tall Shake" loading="lazy">
+                    <span class="item-tag">Madagascar Vanilla</span>
+                </div>
+                <div class="product-info">
+                    <h3>Madagascar Vanilla Bean Tall Shake</h3>
+                    <p>Premium tall milkshake infused with real crushed Madagascar vanilla bean pods.</p>
+                    <strong>&#8377;190</strong>
+                    <button class="btn add-cart-btn" data-name="Madagascar Vanilla Bean Tall Shake" data-price="190">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Cold coffee thickshakr.jpg" alt="Cold Coffee Thickshake" loading="lazy">
+                    <span class="item-tag">Coffee Boost</span>
+                </div>
+                <div class="product-info">
+                    <h3>Cold Coffee Thickshake</h3>
+                    <p>Decadent espresso shake whipped with dark roast coffee, chocolate drizzle & ice cream.</p>
+                    <strong>&#8377;190</strong>
+                    <button class="btn add-cart-btn" data-name="Cold Coffee Thickshake" data-price="190">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Strawberry cream thickshake.jpg" alt="Strawberry Cream Thickshake" loading="lazy">
+                    <span class="item-tag">Real Berry</span>
+                </div>
+                <div class="product-info">
+                    <h3>Strawberry Cream Thickshake</h3>
+                    <p>Farm-fresh sweet strawberries blended into thick ice cream with berry syrup swirl.</p>
+                    <strong>&#8377;200</strong>
+                    <button class="btn add-cart-btn" data-name="Strawberry Cream Thickshake" data-price="200">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Strawberry Milkshake.jpeg" alt="Classic Strawberry Milkshake" loading="lazy">
+                    <span class="item-tag">Sweet Berry</span>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Strawberry Milkshake</h3>
+                    <p>Creamy pink milkshake loaded with ripe strawberry puree and topped with whipped cream.</p>
+                    <strong>&#8377;185</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Strawberry Milkshake" data-price="185">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Chocolate Milkshake.jpeg" alt="Rich Chocolate Fudge Milkshake" loading="lazy">
+                    <span class="item-tag">Choco Fudge</span>
+                </div>
+                <div class="product-info">
+                    <h3>Rich Chocolate Fudge Milkshake</h3>
+                    <p>Ultra-thick chocolate shake blended with fudge sauce and crowned with dark chocolate shavings.</p>
+                    <strong>&#8377;190</strong>
+                    <button class="btn add-cart-btn" data-name="Rich Chocolate Fudge Milkshake" data-price="190">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="milkshakes">
+                <div class="product-img-wrap">
+                    <img src="assets/food/loaded_shakes.jpeg" alt="Monster Loaded Freakshake" loading="lazy">
+                    <span class="item-tag">Freakshake</span>
+                </div>
+                <div class="product-info">
+                    <h3>Monster Loaded Freakshake</h3>
+                    <p>Towering chocolate & caramel shake topped with waffle sticks, choco chips and whipped cream.</p>
+                    <strong>&#8377;260</strong>
+                    <button class="btn add-cart-btn" data-name="Monster Loaded Freakshake" data-price="260">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
             <div class="product-box" data-category="pasta">
                 <div class="product-img-wrap">
-                    <img src="assets/pasta.jpeg" alt="Arrabbiata Spaghetti">
-                    <span class="item-tag">Chef's Pick</span>
+                    <img src="assets/food/Lasagna.jpg" alt="Classic Baked Lasagna" loading="lazy">
+                    <span class="item-tag">Chef's Signature</span>
                 </div>
                 <div class="product-info">
-                    <h3>Arrabbiata Spaghetti</h3>
-                    <p>Al dente spaghetti tossed in spicy tomato arrabbiata sauce, served with herb garlic toast.</p>
-                    <strong>&#8377;260</strong>
-                    <button class="btn add-cart-btn" data-name="Arrabbiata Spaghetti" data-price="260">
+                    <h3>Classic Baked Lasagna</h3>
+                    <p>Tender pasta sheets layered with spiced marinara, creamy ricotta, spinach & bubbling mozzarella.</p>
+                    <strong>&#8377;310</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Baked Lasagna" data-price="310">
                         <i class='bx bx-cart-add'></i> Add to Cart
                     </button>
                 </div>
             </div>
-
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Mac n cheese.jpg" alt="Baked Mac & Cheese" loading="lazy">
+                    <span class="item-tag">Cheesy Comfort</span>
+                </div>
+                <div class="product-info">
+                    <h3>Baked Mac & Cheese</h3>
+                    <p>Elbow macaroni enveloped in a velvety three-cheese sauce, baked with a crispy herb crumb.</p>
+                    <strong>&#8377;260</strong>
+                    <button class="btn add-cart-btn" data-name="Baked Mac & Cheese" data-price="260">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Creamy lemon chicken pasta.jpg" alt="Creamy Lemon Herb Pasta" loading="lazy">
+                    <span class="item-tag">Lemon Butter</span>
+                </div>
+                <div class="product-info">
+                    <h3>Creamy Lemon Herb Pasta</h3>
+                    <p>Penne tossed in a velvety lemon-butter parmesan reduction with fresh cracked pepper and rosemary.</p>
+                    <strong>&#8377;290</strong>
+                    <button class="btn add-cart-btn" data-name="Creamy Lemon Herb Pasta" data-price="290">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/chicken_alfredo.png" alt="Creamy Chicken Alfredo Fettuccine" loading="lazy">
+                    <span class="item-tag">Alfredo Gourmet</span>
+                </div>
+                <div class="product-info">
+                    <h3>Creamy Chicken Alfredo Fettuccine</h3>
+                    <p>Fettuccine ribbons tossed in a rich garlic parmesan cream sauce with sautÃ©ed herbs.</p>
+                    <strong>&#8377;320</strong>
+                    <button class="btn add-cart-btn" data-name="Creamy Chicken Alfredo Fettuccine" data-price="320">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Spaghetti carbanora.jpg" alt="Spaghetti Carbonara" loading="lazy">
+                    <span class="item-tag">Carbonara</span>
+                </div>
+                <div class="product-info">
+                    <h3>Spaghetti Carbonara</h3>
+                    <p>Silky sauce of egg yolks, aged pecorino cheese, cracked black pepper and extra virgin olive oil.</p>
+                    <strong>&#8377;290</strong>
+                    <button class="btn add-cart-btn" data-name="Spaghetti Carbonara" data-price="290">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/carbonara.png" alt="Classic Roman Carbonara" loading="lazy">
+                    <span class="item-tag">Roman Classic</span>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Roman Carbonara</h3>
+                    <p>Twirled spaghetti tossed in a rich, creamy parmesan emulsion with fragrant Italian herbs.</p>
+                    <strong>&#8377;295</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Roman Carbonara" data-price="295">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/pesto_pasta.jpg" alt="Creamy Basil Pesto Penne" loading="lazy">
+                    <span class="item-tag">Genovese Pesto</span>
+                </div>
+                <div class="product-info">
+                    <h3>Creamy Basil Pesto Penne</h3>
+                    <p>Handcrafted Genovese basil pesto with roasted pine nuts, parmesan and extra virgin olive oil.</p>
+                    <strong>&#8377;275</strong>
+                    <button class="btn add-cart-btn" data-name="Creamy Basil Pesto Penne" data-price="275">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Garlic bread spaghetti.jpg" alt="Garlic Bread Spaghetti Bowl" loading="lazy">
+                    <span class="item-tag">CafÃ© Favorite</span>
+                </div>
+                <div class="product-info">
+                    <h3>Garlic Bread Spaghetti Bowl</h3>
+                    <p>Twirled garlic-herb spaghetti served alongside crisp butter-toasted golden garlic bread.</p>
+                    <strong>&#8377;280</strong>
+                    <button class="btn add-cart-btn" data-name="Garlic Bread Spaghetti Bowl" data-price="280">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/garlic_bread_pasta.jpg" alt="Toasted Garlic Bread Pasta Platter" loading="lazy">
+                    <span class="item-tag">Platter</span>
+                </div>
+                <div class="product-info">
+                    <h3>Toasted Garlic Bread Pasta Platter</h3>
+                    <p>SautÃ©ed herb pasta paired with oven-toasted sourdough garlic bread and olive oil dip.</p>
+                    <strong>&#8377;285</strong>
+                    <button class="btn add-cart-btn" data-name="Toasted Garlic Bread Pasta Platter" data-price="285">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Tomato Basil Pasta.jpeg" alt="Sun-Dried Tomato & Basil Penne" loading="lazy">
+                    <span class="item-tag">Sun-Dried Herb</span>
+                </div>
+                <div class="product-info">
+                    <h3>Sun-Dried Tomato & Basil Penne</h3>
+                    <p>Penne tossed with sun-ripened tomatoes, sweet basil leaves, garlic and parmesan flakes.</p>
+                    <strong>&#8377;265</strong>
+                    <button class="btn add-cart-btn" data-name="Sun-Dried Tomato & Basil Penne" data-price="265">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/Cherry tomato pasta.jpg" alt="Roasted Cherry Tomato Linguine" loading="lazy">
+                    <span class="item-tag">Garden Fresh</span>
+                </div>
+                <div class="product-info">
+                    <h3>Roasted Cherry Tomato Linguine</h3>
+                    <p>Blistered sweet cherry tomatoes, extra virgin olive oil, garlic and fresh torn basil leaves.</p>
+                    <strong>&#8377;270</strong>
+                    <button class="btn add-cart-btn" data-name="Roasted Cherry Tomato Linguine" data-price="270">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/pomodoro_spaghetti.png" alt="Classic Italian Pomodoro Spaghetti" loading="lazy">
+                    <span class="item-tag">San Marzano</span>
+                </div>
+                <div class="product-info">
+                    <h3>Classic Italian Pomodoro Spaghetti</h3>
+                    <p>Slow-simmered San Marzano tomato reduction with garlic, oregano and extra virgin olive oil.</p>
+                    <strong>&#8377;270</strong>
+                    <button class="btn add-cart-btn" data-name="Classic Italian Pomodoro Spaghetti" data-price="270">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/tomato_pasta.png" alt="Rich Marinara Tomato Pasta" loading="lazy">
+                    <span class="item-tag">Rustic Marinara</span>
+                </div>
+                <div class="product-info">
+                    <h3>Rich Marinara Tomato Pasta</h3>
+                    <p>Penne simmered in a robust herb-infused marinara sauce and topped with fresh parsley.</p>
+                    <strong>&#8377;260</strong>
+                    <button class="btn add-cart-btn" data-name="Rich Marinara Tomato Pasta" data-price="260">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-box" data-category="pasta">
+                <div class="product-img-wrap">
+                    <img src="assets/food/white_sauce_pasta.png" alt="Creamy Alfredo White Sauce Pasta" loading="lazy">
+                    <span class="item-tag">Velvety Cream</span>
+                </div>
+                <div class="product-info">
+                    <h3>Creamy Alfredo White Sauce Pasta</h3>
+                    <p>Penne coated in a velvety garlic bechamel sauce with broccoli, mushrooms and bell peppers.</p>
+                    <strong>&#8377;275</strong>
+                    <button class="btn add-cart-btn" data-name="Creamy Alfredo White Sauce Pasta" data-price="275">
+                        <i class='bx bx-cart-add'></i> Add to Cart
+                    </button>
+                </div>
+            </div>
         </div>
 
         <button class="slider-btn next-btn" id="next-btn" aria-label="Next dishes">
             <i class='bx bx-chevron-right'></i>
+        </button>
+    </div>
+
+    <!-- View All Button for Menu -->
+    <div class="view-all-wrap">
+        <button class="view-all-btn" id="menu-view-all-btn" onclick="openCatalogModal('menu')">
+            <i class='bx bx-grid-alt'></i>
+            <span>View More / All 67 Menu Items</span>
         </button>
     </div>
 </section>
@@ -805,9 +2094,42 @@
             <select id="nook-select" required>
                 <option value="">Choose a Nook</option>
                 <option value="Window Reading Nook">Window Reading Nook (Sunlit &amp; Rain Views)</option>
-                <option value="Library Corner">Library Corner (Quiet &amp; Bookshelves)</option>
-                <option value="Garden Nook">Garden Nook (Fresh Air &amp; Greenery)</option>
+                <option value="Library Bookshelf Corner">Library Bookshelf Corner (Quiet &amp; Bookshelves)</option>
+                <option value="Garden & Courtyard Nook">Garden &amp; Courtyard Nook (Fresh Air &amp; Greenery)</option>
                 <option value="Couple's Reading Table">Couple's Reading Table (Cozy 2-Seater)</option>
+                <option value="Vintage Chaise Alcove">Vintage Chaise Alcove (Plush Velvet Lounging)</option>
+                <option value="Mid-Century Study Alcove">Mid-Century Study Alcove (Teak Desk &amp; Dual Outlets)</option>
+                <option value="Gothic Noir Reading Lounge">Gothic Noir Reading Lounge (Moody &amp; Atmospheric)</option>
+                <option value="Writers' Balcony & Hearth">Writers' Balcony &amp; Hearth (Terrace &amp; Communal)</option>
+                <option value="Mezzanine Loft Library">Mezzanine Loft Library (Upper Deck Solitude)</option>
+            </select>
+            <select id="book-select">
+                <option value="">Select a Book to Read (Free / Optional)</option>
+                <option value="I will browse the shelves in person">Browse the shelves in person</option>
+                <optgroup label="Classics & Literature">
+                    <option value="The Great Gatsby">The Great Gatsby &mdash; F. Scott Fitzgerald</option>
+                    <option value="1984">1984 &mdash; George Orwell</option>
+                    <option value="Pride and Prejudice">Pride and Prejudice &mdash; Jane Austen</option>
+                    <option value="To Kill a Mockingbird">To Kill a Mockingbird &mdash; Harper Lee</option>
+                    <option value="The Catcher in the Rye">The Catcher in the Rye &mdash; J.D. Salinger</option>
+                    <option value="Crime and Punishment">Crime and Punishment &mdash; Fyodor Dostoevsky</option>
+                    <option value="The Picture of Dorian Gray">The Picture of Dorian Gray &mdash; Oscar Wilde</option>
+                </optgroup>
+                <optgroup label="Mystery, History & Philosophy">
+                    <option value="Murder on the Orient Express">Murder on the Orient Express &mdash; Agatha Christie</option>
+                    <option value="The Silent Patient">The Silent Patient &mdash; Alex Michaelides</option>
+                    <option value="Sapiens: A Brief History of Humankind">Sapiens: A Brief History of Humankind &mdash; Yuval Noah Harari</option>
+                    <option value="The Alchemist">The Alchemist &mdash; Paulo Coelho</option>
+                    <option value="One Hundred Years of Solitude">One Hundred Years of Solitude &mdash; Gabriel GarcÃ­a MÃ¡rquez</option>
+                    <option value="Dune">Dune &mdash; Frank Herbert</option>
+                    <option value="The Fellowship of the Ring">The Fellowship of the Ring &mdash; J.R.R. Tolkien</option>
+                </optgroup>
+                <optgroup label="Romance & Contemporary Fiction">
+                    <option value="Norwegian Wood">Norwegian Wood &mdash; Haruki Murakami</option>
+                    <option value="The Song of Achilles">The Song of Achilles &mdash; Madeline Miller</option>
+                    <option value="Before the Coffee Gets Cold">Before the Coffee Gets Cold &mdash; Toshikazu Kawaguchi</option>
+                    <option value="Normal People">Normal People &mdash; Sally Rooney</option>
+                </optgroup>
             </select>
             <button type="submit" class="btn">Confirm My Nook Reservation</button>
         </form>
@@ -823,7 +2145,7 @@
     </div>
     <div class="events-container">
         <div class="event-box">
-            <img src="assets/sing.jpg" alt="Live Singing">
+            <img src="assets/band.jpg" alt="LIVE ACOUSTIC - Unplugged Evening">
             <div class="event-info">
                 <span>LIVE ACOUSTIC</span>
                 <h3>Unplugged Evening</h3> 
@@ -833,7 +2155,7 @@
             </div>
         </div>
         <div class="event-box">
-            <img src="assets/poetry.jpeg" alt="Podcast Event">
+            <img src="assets/poetry.jpeg" alt="OPEN PODCAST - Stories Over Chai">
             <div class="event-info">
                 <span>OPEN PODCAST</span>
                 <h3>Stories Over Chai</h3>
@@ -843,7 +2165,7 @@
             </div>
         </div>
         <div class="event-box">
-            <img src="assets/book-swap.jpg" alt="Book Club">
+            <img src="assets/book-swap.jpg" alt="COMMUNITY BOOK CLUB - Chapter Conversations">
             <div class="event-info">
                 <span>COMMUNITY BOOK CLUB</span>
                 <h3>Chapter Conversations</h3>
@@ -857,25 +2179,16 @@
 
 <!-- ========== ABOUT ========== -->
 <section class="section about" id="about">
-    <div class="heading">
-        <span>ABOUT US</span>
-        <h2>More Than Just A Café</h2>
-    </div>
     <div class="about-container">
         <div class="about-image">
-            <img src="assets/window_nook.jpeg" alt="Chai &amp; Chapter">
+            <img src="assets/hero.jpg" alt="About Chai &amp; Chapter">
         </div>
         <div class="about-text">
-            <h2>Chai for the heart.<br>Books for the soul.</h2>
-            <p>
-                Chai &amp; Chapter was born from a simple yearning: a quiet haven in Hyderabad 
-                where time slows down, phones can rest, and humans can connect with good literature and warm chai.
-            </p>
-            <p>
-                Whether you're looking for an uninterrupted 3-hour reading session, a cozy spot to write your novel, 
-                or a heartfelt conversation over pizza and filter coffee, there's always a warm seat waiting for you.
-            </p>
-            <a href="#reservation" class="btn">Come Visit Today</a>
+            <span>OUR STORY &bull; BORN IN HYDERABAD</span>
+            <h2>Where Literature Meets Soulful Warmth</h2>
+            <p>Chai &amp; Chapter was founded with a single belief: that in a fast-paced world, everyone deserves a quiet sanctuary where time slows down.</p>
+            <p>We blend the warmth of freshly simmered clay-pot chai with thousands of curated books and dedicated silence zones. Come for the chai, stay for the chapter.</p>
+            <a href="#nook-showcase" class="btn">Explore Our Spaces</a>
         </div>
     </div>
 </section>
@@ -931,28 +2244,30 @@
 </section>
 
 <!-- ========== NEWSLETTER ========== -->
-<section class="newsletter">
-    <span>THE CHAPTER CLUB</span>
-    <h2>Stay In The Story</h2>
-    <p>Get monthly book recommendations, secret event invites and café updates.</p>
-    <form id="newsletter-form">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit">Subscribe</button>
-    </form>
+<section class="section newsletter">
+    <div class="newsletter-content">
+        <h2>Join The Chapter Circle</h2>
+        <p>Subscribe for weekly book recommendations, secret event invites, and seasonal menu previews.</p>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit" class="btn">Join Our Circle</button>
+        </form>
+    </div>
 </section>
 
-<!-- ========== FOOTER ========== -->
+<!-- ========== LUXURY VINTAGE FOOTER ========== -->
 <footer>
     <div class="footer-container">
         <div class="footer-brand">
-            <img src="assets/logo_new.jpg" alt="Chai &amp; Chapter">
+            <img src="assets/hero.jpg" alt="Chai &amp; Chapter">
             <h2>Chai &amp; Chapter</h2>
-            <p>Good chai. Better books. Beautiful conversations.</p>
+            <p>Your urban literary sanctuary in Hyderabad. Steaming handcrafted chai, artisanal wood-fired bakes, and peaceful reading nooks.</p>
         </div>
         <div>
             <h3>Explore</h3>
             <a href="#home">Home</a>
             <a href="#nook-showcase">Reading Nooks</a>
+            <a href="#books">CafÃ© Library</a>
             <a href="#menu">In-Store Menu</a>
             <a href="#events">Events</a>
             <a href="#reservation">Reservations</a>
@@ -970,5 +2285,21 @@
 </footer>
 
 <script src="script.js"></script>
+
+<!-- ========== CLEAN CATALOG POPUP MODAL ========== -->
+<div class="modal-overlay catalog-modal-overlay" id="catalog-modal">
+    <div class="modal-box catalog-modal-box">
+        <div class="catalog-modal-header">
+            <h2 class="catalog-modal-title" id="catalog-modal-title">Complete Library</h2>
+            <button class="catalog-close-btn" onclick="closeCatalogModal()" aria-label="Close modal"><i class='bx bx-x'></i></button>
+        </div>
+        <div class="catalog-modal-body" id="catalog-modal-body">
+            <div class="catalog-grid" id="catalog-grid">
+                <!-- Dynamically populated cards -->
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
