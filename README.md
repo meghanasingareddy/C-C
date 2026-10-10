@@ -89,8 +89,4 @@ Open `index.html` directly in any modern web browser. No build step or server is
 
 The site is deployed on Vercel. To redeploy after changes:
 
-```
-vercel --prod --yes --name chai-and-chapter
-```
-
 Production URL: https://chai-and-chapter.vercel.app
